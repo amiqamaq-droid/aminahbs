@@ -31,130 +31,78 @@
             --text: #2c3e50; 
             --shadow: rgba(0,0,0,0.1); 
             --danger: #dc3545;
-            --nav-height: 70px;
-            --bottom-nav-height: 70px;
+            --whatsapp: #25D366; 
+            --whatsapp-dark: #128C7E;
+            --nav-height: 80px;
         }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); overflow-x: hidden; background-color: #f4f4f4;}
         html { scroll-behavior: smooth; }
 
         /* ========================================
-           1. TOP NAVIGATION (SMART HEADER)
+           NAVIGATION
            ======================================== */
-        nav#navbar { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            z-index: 1000; 
-            transition: transform 0.3s ease-in-out, background-color 0.3s, box-shadow 0.3s; /* Transisi halus */
-            padding: 0.5rem 0;
-            background: var(--primary); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            height: var(--nav-height);
+        nav { 
+            position: fixed; top: 0; width: 100%; z-index: 1000; transition: all 0.3s ease; padding: 0.8rem 0;
+            background: var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.1); height: var(--nav-height);
             display: flex; align-items: center;
         }
-
-        /* Kelas untuk menyembunyikan navbar saat scroll ke bawah */
-        nav#navbar.nav-hidden {
-            transform: translateY(-100%);
-        }
-
-        nav#navbar.scrolled { 
-            background: var(--white); 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
-        }
+        nav.scrolled { background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; width: 100%; }
         .logo-icon { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-icon img { width: 45px; height: 45px; object-fit: contain; }
-        .logo-full { font-size: 1.1rem; font-weight: 700; color: var(--white); white-space: nowrap; }
+        .logo-icon img { width: 50px; height: 50px; object-fit: contain; }
+        .logo-full { font-size: 1.2rem; font-weight: 700; color: var(--white); white-space: nowrap; }
         
-        .nav-links { display: flex; gap: 25px; list-style: none; margin-left: auto; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--white); font-weight: 500; transition: color 0.3s; cursor: pointer; font-size: 0.95rem; }
+        .nav-links { display: flex; gap: 30px; list-style: none; margin-left: auto; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--white); font-weight: 500; transition: color 0.3s; cursor: pointer; font-size: 1rem; }
         .nav-links a:hover { color: var(--secondary); }
 
-        /* Perubahan warna saat discroll (Background Putih) */
-        nav#navbar.scrolled .logo-full { color: var(--primary); }
-        nav#navbar.scrolled .nav-links a { color: var(--text); }
-        nav#navbar.scrolled .nav-links a:hover, nav#navbar.scrolled .nav-links a.active { color: var(--secondary); }
+        nav.scrolled .logo-full { color: var(--primary); }
+        nav.scrolled .nav-links a { color: var(--text); }
+        nav.scrolled .nav-links a:hover, nav.scrolled .nav-links a.active { color: var(--secondary); }
 
         .nav-links .btn-daftar { 
-            background: var(--secondary); color: var(--primary-dark) !important; padding: 0.5rem 1.2rem; 
+            background: var(--secondary); color: var(--primary-dark) !important; padding: 0.6rem 1.5rem; 
             border-radius: 50px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s; 
         }
         .nav-links .btn-daftar:hover { background: #c9a030; transform: translateY(-2px); }
-        nav#navbar.scrolled .nav-links .btn-daftar { background: var(--primary); color: var(--white) !important; }
+        nav.scrolled .nav-links .btn-daftar { background: var(--primary); color: var(--white) !important; }
 
-        .mobile-menu-btn { display: none; } /* Hide Burger */
+        .mobile-menu-btn { display: none; }
         .nav-links a.active { color: var(--secondary) !important; font-weight: 700; }
 
         /* ========================================
-           2. BOTTOM NAVIGATION (MOBILE APP STYLE)
+           BOTTOM NAVIGATION
            ======================================== */
         .bottom-nav {
-            display: none; /* Default Hidden on Desktop */
-            position: fixed; 
-            bottom: 0; left: 0; width: 100%; 
-            height: var(--bottom-nav-height);
-            background: var(--white); 
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            z-index: 1001; 
-            justify-content: space-around; /* Meratakan 5 item */
-            align-items: center; 
-            padding: 0 0.5rem;
-            border-top-left-radius: 20px; 
-            border-top-right-radius: 20px;
+            display: none; 
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
+            background: var(--white); box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1001; justify-content: space-around; align-items: center; padding: 0.5rem 0;
         }
-
         .bottom-nav-item {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-decoration: none; color: #999; font-size: 0.7rem; 
-            flex: 1; /* Membagi lebar rata */
-            height: 100%;
-            transition: all 0.3s;
+            text-decoration: none; color: #888; font-size: 0.75rem; flex: 1;
         }
-        
-        .bottom-nav-item i { font-size: 1.3rem; margin-bottom: 4px; transition: transform 0.2s; }
+        .bottom-nav-item i { font-size: 1.2rem; margin-bottom: 3px; transition: transform 0.2s; }
         .bottom-nav-item.active { color: var(--primary); font-weight: 700; }
-        .bottom-nav-item.active i { transform: translateY(-3px); }
+        .bottom-nav-item.active i { transform: translateY(-2px); }
 
-        /* --- TENGAH: FLOATING BUTTON (PENDAFTARAN) --- */
-        .nav-center-wrapper {
-            position: relative;
-            top: -20px; /* Angkat ke atas */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            flex: 1;
+        .nav-floating-wrapper {
+            position: relative; top: -25px; display: flex; flex-direction: column; align-items: center; flex: 1;
         }
-
         .nav-floating-btn {
             width: 55px; height: 55px;
-            background: var(--primary); /* Warna Hijau */
-            color: white;
-            border-radius: 50%;
+            background: var(--primary); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             text-decoration: none;
             box-shadow: 0 5px 15px rgba(10, 92, 61, 0.4);
-            border: 4px solid var(--white); /* Efek terpotong */
-            font-size: 1.4rem;
-            transition: transform 0.2s, background-color 0.3s;
+            border: 4px solid var(--white);
+            font-size: 1.4rem; transition: transform 0.3s;
         }
-
         .nav-floating-btn:active { transform: scale(0.95); }
-        
-        /* Saat halaman Pendaftaran aktif */
-        .nav-floating-btn.active { 
-            background: var(--secondary); /* Warna Emas */
-            color: var(--primary-dark);
-        }
-
-        .floating-label {
-            margin-top: 4px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--text);
-        }
+        .nav-floating-btn.active { background: var(--secondary); color: var(--primary-dark); }
+        .floating-label { margin-top: 5px; font-size: 0.7rem; font-weight: 700; color: var(--text); }
 
         /* ========================================
            PAGE LOGIC
@@ -163,18 +111,13 @@
         .hidden { display: none !important; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* ========================================
-           GENERAL SECTIONS
-           ======================================== */
-        section { padding: 4rem 1.5rem; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-title { 
-            text-align: center; font-size: 2.2rem; color: var(--primary); 
-            margin-bottom: 1.5rem; position: relative; display: block; font-weight: 800; 
-        }
-        .section-subtitle { text-align: center; color: #666; margin-bottom: 2.5rem; font-size: 1.1rem; }
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 0.5rem; }
+        .section-title { text-align: center; font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem; position: relative; display: block; font-weight: 800; }
+        .section-title::after { content: none; }
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 3rem; font-size: 1.1rem; }
 
-        /* HERO PARALLAX */
+        /* HERO */
         .hero { 
             position: relative; height: 75vh; min-height: 500px; 
             display: flex; align-items: center; justify-content: center; text-align: center; 
@@ -184,70 +127,81 @@
         }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); }
 
-        /* PROFIL (SAMBUTAN & VISI MISI) */
-        .sambutan-section { padding: 3rem 1.5rem; background-color: var(--white); text-align: center; margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
-        .arabic-greeting { font-family: 'Times New Roman', serif; font-size: 1.8rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 0.5rem; }
-        .sambutan-content { max-width: 900px; margin: 1.5rem auto; font-size: 1.1rem; line-height: 1.8; color: #444; }
+        /* PROFIL (SAMBUTAN) */
+        .sambutan-section { padding: 4rem 2rem; background-color: var(--white); text-align: center; margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
+        .arabic-greeting { 
+            font-family: 'Times New Roman', serif; 
+            font-size: 2rem; /* Desktop Size */
+            font-weight: 600; 
+            color: var(--primary-dark); 
+            margin-bottom: 0.5rem; 
+            line-height: 1.4;
+        }
+        .sambutan-content { max-width: 900px; margin: 2rem auto; font-size: 1.15rem; line-height: 1.8; color: #444; }
         .sambutan-content .hadith { font-style: italic; color: var(--primary); font-weight: 600; padding: 1rem; background: #f0f9f4; border-radius: 10px; margin-bottom: 2rem; display: inline-block; }
-        .signature { margin-top: 2rem; font-size: 1rem; color: var(--primary-dark); }
+        .signature { margin-top: 3rem; font-size: 1.1rem; color: var(--primary-dark); }
 
-        .visi-misi { padding: 2rem 1.5rem 5rem; background: transparent; }
-        .vm-content-simple { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
-        .vm-item { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .vm-item h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem; text-align: center; }
+        .visi-misi { padding: 2rem 2rem 5rem; background: transparent; }
+        .vm-content-simple { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
+        .vm-item { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .vm-item h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; }
         .vm-item ul li { margin-bottom: 0.8rem; padding-left: 1rem; }
 
         /* PROGRAMS */
         .programs { background: var(--light); }
-        .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .program-card { background: white; border-radius: 20px; padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; }
+        .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .program-card { background: white; border-radius: 20px; padding: 3rem 2rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; }
         .program-card:hover { transform: translateY(-10px); border-color: var(--secondary); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-        .program-card h3 { font-size: 1.8rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1; }
+        .program-card h3 { font-size: 2rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1; }
         .program-level { display: inline-block; background: #fff8e1; color: var(--secondary); font-weight: 700; font-size: 0.9rem; padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid var(--secondary); }
         .program-card p { font-size: 1rem; color: #555; margin-bottom: 0.5rem; }
 
         /* FASILITAS COLLAGE */
-        .facilities-collage { background: #f8f9fa; padding: 3rem 1.5rem; }
-        .collage-container { display: flex; flex-direction: column; gap: 3rem; max-width: 1100px; margin: 0 auto; }
-        .facility-row { display: flex; align-items: center; gap: 3rem; opacity: 0; animation: fadeIn 1s forwards; background: white; padding: 1.5rem; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; cursor: pointer; }
+        .facilities-collage { background: #f8f9fa; padding: 4rem 2rem; }
+        .collage-container { display: flex; flex-direction: column; gap: 4rem; max-width: 1100px; margin: 0 auto; }
+        .facility-row { display: flex; align-items: center; gap: 4rem; opacity: 0; animation: fadeIn 1s forwards; background: white; padding: 2rem; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; cursor: pointer; }
         .facility-row:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .facility-row:nth-child(even) { flex-direction: row-reverse; } 
-        .fac-image-wrapper { flex: 1; border-radius: 15px; overflow: hidden; height: 280px; }
+        .fac-image-wrapper { flex: 1; border-radius: 15px; overflow: hidden; height: 300px; }
         .fac-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .facility-row:hover .fac-image-wrapper img { transform: scale(1.1); }
         .fac-text-content { flex: 1; padding: 0 1rem; }
-        .fac-text-content h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.8rem; font-weight: 800; }
-        .fac-text-content p { font-size: 1rem; color: #555; line-height: 1.6; }
+        .fac-text-content h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; font-weight: 800; }
+        .fac-text-content p { font-size: 1.1rem; color: #555; line-height: 1.7; }
 
-        /* KEUNGGULAN & PROGRAM UNGGULAN */
+        /* VIDEO & OTHER */
         .keunggulan { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
-        .keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .keunggulan-item { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; gap: 1rem; }
+        .keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .keunggulan-item { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; gap: 1.5rem; }
         
         .program-unggulan { background: var(--white); }
-        .program-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-        .program-item { background: linear-gradient(135deg, var(--white) 0%, #fafafa 100%); padding: 2.5rem 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.08); transition: all 0.4s; position: relative; overflow: hidden; }
+        .program-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .program-item { background: linear-gradient(135deg, var(--white) 0%, #fafafa 100%); padding: 3rem 2rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.08); transition: all 0.4s; position: relative; overflow: hidden; }
         .program-item:hover { transform: translateY(-10px); border: 1px solid var(--secondary); }
-        .program-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(10, 92, 61, 0.3); }
-        .program-icon-wrapper i { font-size: 2.2rem; color: var(--secondary); }
+        .program-icon-wrapper { width: 90px; height: 90px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(10, 92, 61, 0.3); }
+        .program-icon-wrapper i { font-size: 2.5rem; color: var(--secondary); }
 
-        /* VIDEO */
-        .video-section { padding: 4rem 1.5rem; background-color: var(--light); text-align: center; }
+        .video-section { padding: 5rem 2rem; background-color: var(--light); text-align: center; }
         .video-responsive { max-width: 900px; margin: 0 auto; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); border: 5px solid white; }
         .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
-        /* FASILITAS PENDUKUNG */
-        .program-fasilitas-section { background: var(--white); text-align: center; padding-top: 3rem; }
-        .feature-list-wrapper { max-width: 900px; margin: 0 auto; padding: 2rem; background: var(--light); border-radius: 20px; }
-        .simple-list-grid { display: flex; justify-content: center; gap: 3rem; text-align: left; flex-wrap: wrap; }
-        .clean-list { list-style: none; padding: 0; margin: 0; min-width: 250px; }
-        .clean-list li { margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px dashed rgba(0,0,0,0.1); display: flex; align-items: center; font-size: 1.1rem; gap: 1rem; color: #444; }
+        .program-fasilitas-section { background: var(--white); text-align: center; padding-top: 4rem; }
+        .feature-list-wrapper { max-width: 900px; margin: 0 auto; padding: 3rem; background: var(--light); border-radius: 20px; }
+        .simple-list-grid { display: flex; justify-content: center; gap: 4rem; text-align: left; flex-wrap: wrap; }
+        .clean-list { list-style: none; padding: 0; margin: 0; min-width: 280px; }
+        .clean-list li { margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 1px dashed rgba(0,0,0,0.1); display: flex; align-items: center; font-size: 1.1rem; gap: 1rem; color: #444; }
         .clean-list li i { color: var(--secondary); font-size: 1.2rem; }
         
-        .cta-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; text-align: center; padding: 5rem 1.5rem; }
-        .btn-primary { display: inline-block; background: var(--secondary); color: var(--primary-dark); padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 800; transition: all 0.3s; min-width: 250px; }
-        .btn-secondary { display: inline-block; background: transparent; color: white; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 800; border: 2px solid white; transition: all 0.3s; min-width: 250px; }
-        .btn-primary:hover, .btn-secondary:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .cta-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; text-align: center; padding: 6rem 2rem; }
+        .btn-whatsapp-cta { 
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--whatsapp); color: white; 
+            padding: 1.2rem 3rem; border-radius: 50px; 
+            text-decoration: none; font-weight: 800; font-size: 1.2rem;
+            transition: all 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .btn-whatsapp-cta:hover { background: var(--whatsapp-dark); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .btn-whatsapp-cta i { font-size: 1.8rem; }
 
         /* FOOTER */
         footer { background: var(--primary-dark); color: white; padding: 4rem 0 1.5rem; font-size: 0.95rem; margin-bottom: 0; }
@@ -256,134 +210,104 @@
         .footer-logo-img { width: 50px; height: 50px; }
         .footer-logo-text { font-size: 1.4rem; font-weight: 700; color: var(--secondary); }
         .footer-tagline { display: block; margin-bottom: 1.5rem; font-style: italic; opacity: 0.8; margin-left: 1rem; }
-        .footer-contact-info p { margin-left: 1rem; margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 10px; }
+        
+        .footer-contact-info p { 
+            margin-left: 0; margin-bottom: 0.8rem; 
+            display: flex; align-items: center; /* Sejajar vertikal */
+            gap: 15px; /* Jarak ikon ke teks */
+        }
+        .footer-contact-info i { 
+            width: 20px; /* Lebar tetap agar sejajar */
+            text-align: center; 
+            flex-shrink: 0; /* Ikon tidak mengecil */
+        }
         .footer-contact-info a { color: white; text-decoration: none; transition: color 0.3s; }
         .footer-contact-info a:hover { color: var(--secondary); }
+        
         .footer-socials { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
-        .footer-socials a { color: white; font-size: 1.5rem; transition: transform 0.3s; }
-        .footer-socials a:hover { color: var(--secondary); transform: scale(1.1); }
+        .footer-socials a { color: white; font-size: 1.8rem; transition: transform 0.3s; }
+        .footer-socials a:hover { color: var(--secondary); transform: scale(1.2); }
+        .footer-socials a.wa-link:hover { color: var(--whatsapp); }
+
         .footer-map-container { width: 100%; max-width: 500px; height: 240px; border-radius: 15px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); }
         .footer-map-container iframe { width: 100%; height: 100%; border: 0; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-bottom a { color: var(--secondary); text-decoration: none; }
+        
+        .footer-bottom { 
+            text-align: center; padding-top: 1.5rem; padding-bottom: 1rem; /* Jarak bawah ditambah */
+            border-top: 1px solid rgba(255,255,255,0.1); 
+        }
+        .footer-bottom p a { color: var(--secondary); text-decoration: none; }
 
-        /* PAGE VIEWS */
+        /* VIEW CONTAINERS */
         #pendaftaran-view, #fasilitas-view, #profil-view { background: #f4f4f4; padding-bottom: 4rem; }
         
-        /* SCHEDULE & PRICING */
-        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-        .schedule-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; }
-        .schedule-header { background: var(--secondary); color: var(--primary-dark); padding: 1.5rem; font-weight: 800; font-size: 1.2rem; text-align: center; }
-        .schedule-body { padding: 1.5rem; }
-        .schedule-item { margin-bottom: 1.5rem; border-bottom: 1px solid #f0f0f0; padding-bottom: 1rem; }
-        .schedule-item:last-child { border: none; margin: 0; padding: 0; }
-        .wave-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .wave-date { color: #555; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
-
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-        .pricing-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); border: 1px solid #eee; transition: transform 0.3s; }
-        .pricing-card:hover { transform: translateY(-10px); border-color: var(--secondary); }
-        .pricing-header { background: var(--primary); color: white; padding: 2rem; text-align: center; }
+        /* PENDAFTARAN ELEMENTS */
+        .schedule-grid, .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .schedule-card, .pricing-card, .pricing-footer-info { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .schedule-header, .pricing-header { background: var(--secondary); color: var(--primary-dark); padding: 1.5rem; font-weight: 800; font-size: 1.3rem; text-align: center; }
+        .pricing-header { background: var(--primary); color: white; padding: 2.5rem 2rem; }
         .pricing-header.boarding { background: var(--primary-dark); }
-        .pricing-total { font-size: 2.2rem; font-weight: 800; color: var(--secondary); margin: 10px 0; }
-        .pricing-body { padding: 2rem; }
-        .pricing-item { margin-bottom: 1.5rem; border-bottom: 1px dashed #ddd; padding-bottom: 1rem; }
-        .pricing-item:last-child { border: none; }
-        .pricing-item-title { display: flex; justify-content: space-between; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; font-size: 1rem; }
+        .pricing-total { font-size: 2.5rem; font-weight: 800; color: var(--secondary); margin: 10px 0; }
+        .schedule-body, .pricing-body { padding: 2rem; }
+        .schedule-item, .pricing-item { margin-bottom: 1.5rem; border-bottom: 1px solid #f0f0f0; padding-bottom: 1rem; }
+        .pricing-item { border-bottom: 1px dashed #ddd; }
+        .schedule-item:last-child, .pricing-item:last-child { border: none; margin: 0; padding: 0; }
+        .wave-title, .pricing-item-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .pricing-item-title { display: flex; justify-content: space-between; }
         .pricing-details { list-style: none; padding-left: 0; font-size: 0.9rem; color: #666; }
         .pricing-details li::before { content: '•'; color: var(--secondary); padding-right: 5px; font-weight: bold; }
-        .pricing-footer-info { background: var(--white); border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .payment-info { background: #e8f5e9; border-left: 6px solid var(--primary); padding: 1.5rem; border-radius: 15px; }
-        .promo-info { background: #fff8e1; border-left: 6px solid var(--danger); padding: 1.5rem; border-radius: 15px; }
-        .bank-details { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 1rem 0; letter-spacing: 1px; }
-
+        .payment-info { background: #e8f5e9; border-left: 6px solid var(--primary); padding: 2rem; border-radius: 15px; }
+        .promo-info { background: #fff8e1; border-left: 6px solid var(--danger); padding: 2rem; border-radius: 15px; }
+        
         /* BROSUR GALLERY */
         .brochure-section { text-align: center; margin-bottom: 4rem; }
-        .brochure-gallery-grid {
-            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;
-        }
-        
-        .brochure-card { 
-            position: relative; background: #fff; border-radius: 15px; width: 300px; height: 380px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee;
-            overflow: hidden; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column;
-        }
+        .brochure-gallery-grid { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
+        .brochure-card { position: relative; background: #fff; border-radius: 15px; width: 300px; height: 380px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; overflow: hidden; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; }
         .brochure-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); border-color: var(--secondary); }
-        
         .brochure-image-container { height: 100%; width: 100%; position: relative; background: #f0f0f0; }
         .brochure-thumb { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s; }
         .brochure-card:hover .brochure-thumb { transform: scale(1.05); }
-        
-        .brochure-overlay {
-            position: absolute; inset: 0; background: rgba(10, 92, 61, 0.85);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s;
-        }
+        .brochure-overlay { position: absolute; inset: 0; background: rgba(10, 92, 61, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
         .brochure-card:hover .brochure-overlay { opacity: 1; }
-        
-        .btn-view-pdf {
-            background: white; color: var(--primary); padding: 0.8rem 1.5rem; border-radius: 50px;
-            font-weight: bold; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px;
-        }
-        
-        .brochure-footer {
-            background: white; padding: 1rem; text-align: center;
-            border-top: 1px solid #eee; z-index: 2; height: 60px;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .btn-view-pdf { background: white; color: var(--primary); padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+        .brochure-footer { background: white; padding: 1rem; text-align: center; border-top: 1px solid #eee; z-index: 2; height: 60px; display: flex; align-items: center; justify-content: center; }
         .brochure-title { font-size: 1rem; color: var(--text); font-weight: 700; margin: 0; }
 
         /* MODAL */
-        .gallery-modal { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0, 0, 0, 0.95); z-index: 10005; 
-            align-items: center; justify-content: center; animation: fadeIn 0.3s ease; padding: 20px;
-        }
+        .gallery-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 10005; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; padding: 20px; }
         .gallery-content { position: relative; width: 100%; max-width: 1000px; max-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        
-        .gallery-close { 
-            position: fixed; top: 20px; right: 20px; 
-            background: rgba(255, 255, 255, 0.2); border-radius: 50%;
-            width: 50px; height: 50px; border: none; color: white; font-size: 2rem; 
-            cursor: pointer; transition: all 0.3s; z-index: 10006; 
-            display: flex; align-items: center; justify-content: center;
-        }
+        .gallery-close { position: fixed; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; width: 50px; height: 50px; border: none; color: white; font-size: 2rem; cursor: pointer; transition: all 0.3s; z-index: 10006; display: flex; align-items: center; justify-content: center; }
         .gallery-close:hover { background: var(--secondary); color: var(--primary); }
-
         .gallery-image { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
         .gallery-caption { text-align: center; color: white; font-size: 1.2rem; margin-bottom: 1rem; padding: 0 2rem; }
-        .gallery-iframe { width: 100%; height: 70vh; border: none; border-radius: 10px; background: white; }
-        
-        .download-btn {
-            margin-top: 15px; background: var(--secondary); color: var(--primary-dark); padding: 12px 30px;
-            text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s;
-        }
+        .gallery-iframe { width: 100%; height: 80vh; border: none; border-radius: 10px; background: white; }
+        .download-btn { margin-top: 15px; background: var(--secondary); color: var(--primary-dark); padding: 10px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
         .download-btn:hover { background: #fff; color: var(--primary); transform: translateY(-2px); }
 
-        /* RESPONSIVE CSS (MOBILE OPTIMIZED) */
+        /* RESPONSIVE CSS */
         @media (max-width: 768px) {
-            body { padding-bottom: 80px; } /* Jarak untuk Menu Bawah */
-            
-            /* Sembunyikan Nav Desktop */
+            body { padding-bottom: 80px; } 
             .nav-links { display: none; }
-            
-            /* Tampilkan Nav Bawah */
             .bottom-nav { display: flex; }
             
             .hero { background-image: url('assets/images/hero-pesantren-mobile.png') !important; height: 60vh; background-attachment: scroll; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; padding: 0 1.5rem; }
             .footer-left p { justify-content: center; }
+            
+            /* PENGATURAN FONT ARAB MOBILE */
+            .arabic-greeting { font-size: 1.5rem; margin-bottom: 0.2rem; }
+            
+            /* PENGATURAN JARAK FOOTER MOBILE */
+            .footer-socials { margin-top: 0.5rem; gap: 1rem; }
+            .footer-contact-info p { justify-content: center; margin-bottom: 0.5rem; } /* Rapat */
+            .footer-bottom { padding-top: 1rem; padding-bottom: 1rem; font-size: 0.8rem; }
+            footer { padding-bottom: calc(70px + 1rem); }
+
             .program-cards { grid-template-columns: 1fr; }
             .simple-list-grid { gap: 2rem; } 
-            
             .facility-row { flex-direction: column !important; text-align: center; gap: 1rem; }
             .fac-image-wrapper { height: 250px; width: 100%; }
             .fac-text-content { padding: 1rem; }
-            
-            /* Jarak Footer agar tidak tertutup Menu Bawah */
-            footer { padding-bottom: calc(var(--bottom-nav-height) + 2rem); }
         }
     </style>
 </head>
@@ -395,7 +319,6 @@
                 <img src="assets/images/logo_abs.png" alt="Logo Aminah Boarding School">
                 <span class="logo-full">Aminah Boarding School</span>
             </a>
-            
             <ul class="nav-links">
                 <li><a onclick="switchPage('home')" id="link-home" class="active">Beranda</a></li>
                 <li><a onclick="switchPage('profil')" id="link-profil">Profil</a></li> 
@@ -411,15 +334,15 @@
             <i class="fas fa-home"></i>
             <span>Beranda</span>
         </a>
-        
         <a href="#" onclick="switchPage('profil')" class="bottom-nav-item" id="bot-profil">
             <i class="fas fa-user-circle"></i>
             <span>Profil</span>
         </a>
         
-        <div class="nav-center-wrapper">
+        <div class="nav-floating-wrapper">
             <a href="#" onclick="switchPage('pendaftaran')" class="nav-floating-btn" id="bot-pendaftaran">
-                <i class="fas fa-pen-fancy"></i> </a>
+                <i class="fas fa-pen-fancy"></i>
+            </a>
             <span class="floating-label">Daftar</span>
         </div>
 
@@ -427,7 +350,6 @@
             <i class="fas fa-mosque"></i>
             <span>Fasilitas</span>
         </a>
-        
         <a href="https://wa.me/6281211121485" target="_blank" class="bottom-nav-item">
             <i class="fab fa-whatsapp"></i>
             <span>WA</span>
@@ -516,9 +438,10 @@
         <section class="cta-section">
             <div class="container">
                 <h2>Bergabunglah Bersama Kami</h2>
-                <div class="cta-buttons-group"> 
-                    <a href="https://aminahboardingschool.com/pendaftaran/" target="_blank" class="btn-primary">Formulir Pendaftaran</a>
-                    <a href="assets/images/brosur.pdf" class="btn-secondary" target="_blank">Download Brosur</a>
+                <div class="cta-buttons-group" style="margin-top: 2rem;"> 
+                    <a href="https://wa.me/6281211121485?text=%D8%A8%D9%90%D8%B3%D9%92%D9%85%D9%90%20%D8%A7%D9%84%D9%84%D9%87%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%92%D9%85%D9%90%D9%86%D9%90%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%90%D9%8A%D9%92%D9%85%D9%90%0A%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%88%D8%B1%D8%AD%D9%85%D8%A9%20%D8%A7%D9%84%D9%84%D9%87%20%D9%88%D8%A8%D8%B1%D9%83%D8%A7%D8%AA%D9%87%0A%0ASaya%20ingin%20bertanya%20tentang%20Pesantren%20Aminah%20Boarding%20School.%0A%0Asumber:%20aminahboardingschool.com" target="_blank" class="btn-whatsapp-cta">
+                        <i class="fab fa-whatsapp"></i> Chat WhatsApp Admin
+                    </a>
                 </div>
             </div>
         </section>
@@ -531,12 +454,13 @@
 
             <section class="sambutan-section">
                 <div class="container">
+                    <h3 class="arabic-greeting">بِسْمِ الله الرَّحْمٰنِ الرَّحِيْمِ</h3>
                     <h3 class="arabic-greeting">السلام عليكم ورحمة الله وبركاته</h3>
-                    <h3 class="arabic-greeting">بسم الله الرحمن الرحيم</h3>
+                    
                     <div class="sambutan-content">
                         <p class="hadith">Rasulullah SAW bersabda "Tholabul 'ilmi faridhotun 'ala kulli muslimin wal muslimat" yang artinya "Menuntut ilmu adalah kewajiban bagi setiap muslim dan muslimat,"</p>
                         <p>Oleh karena itu, kaum muslimin, Bapak/Ibu yang sedang mencari sekolah Islam untuk putra-putrinya, yang mengajarkan ilmu syar'i sesuai pemahaman salafus sholeh, maka guru-guru di Pesantren Putra Aminah Boarding School siap untuk membimbing dan membina putra-putri Bapak/Ibu semua.</p>
-                        <p>Pesantren Putra Aminah Boarding School memiliki tempat yang sangat nyaman untuk belajar. Mulai dari lingkungannya yang tenang, ruangan, kelas, asrama, mesjid, semuanya ber-AC. Dan lokasinya yang sangat strategis berada di tengah kota Jakarta. Pesantren Putra Aminah Boarding School telah terakreditasi A. Sehingga lulusan Pesantren Aminah Boarding School akan mendapat ijazah resmi yang diakui oleh negara dan dapat melanjutkan pendidikan ke berbagai universitas atau perguruan tinggi baik yang ada di dalam negeri maupun luar negeri.</p>
+                        <p>Pesantren Putra Aminah Boarding School memiliki tempat yang sangat nyaman untuk belajar. Mulai dari lingkungannya yang tenang, ruangan, kelas, asrama, mesjid, semuanya ber-AC. Dan lokasinya yang sangat strategis berada di tengah kota Jakarta. Pesantren Putra Aminah Boarding School telah terakreditasi A.</p>
                         <p>Segera daftarkan anak Bapak Ibu ke Pesantren Aminah Boarding School, karena quota kami terbatas. Terima kasih. Semoga kita semua selalu dalam lindungan Allah SWT. Amiin.</p>
                     </div>
                     <p class="signature">Hormat Kami,<br><br><strong>Ustadz La Ode Sandipati, S.Pd., M.Pd., S.Q.I, C.EQL., MTM.</strong><br>Pimpinan Pesantren</p>
@@ -717,37 +641,25 @@
                     <div class="brochure-card" onclick="openPdfModal('assets/images/brosur.pdf', 'Brosur PSB')">
                         <div class="brochure-image-container">
                             <img src="assets/images/brosur-thumb.jpg" alt="Sampul Brosur PSB" class="brochure-thumb" onerror="this.src='https://placehold.co/300x400/eee/333?text=Cover+Brosur'">
-                            <div class="brochure-overlay">
-                                <span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span>
-                            </div>
+                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
                         </div>
-                        <div class="brochure-footer">
-                            <h4 class="brochure-title">Brosur PSB</h4>
-                        </div>
+                        <div class="brochure-footer"><h4 class="brochure-title">Brosur PSB</h4></div>
                     </div>
 
                     <div class="brochure-card" onclick="openPdfModal('assets/images/biaya.pdf', 'Rincian Biaya')">
                         <div class="brochure-image-container">
                             <img src="assets/images/biaya-thumb.jpg" alt="Sampul Biaya" class="brochure-thumb" onerror="this.src='https://placehold.co/300x400/eee/333?text=Cover+Biaya'">
-                            <div class="brochure-overlay">
-                                <span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span>
-                            </div>
+                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
                         </div>
-                        <div class="brochure-footer">
-                            <h4 class="brochure-title">Rincian Biaya</h4>
-                        </div>
+                        <div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya</h4></div>
                     </div>
 
                     <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-a4.pdf', 'Brosur Lengkap')">
                         <div class="brochure-image-container">
                             <img src="assets/images/brosur-a4-thumb.jpg" alt="Sampul Brosur A4" class="brochure-thumb" onerror="this.src='https://placehold.co/300x400/eee/333?text=Cover+Lengkap'">
-                            <div class="brochure-overlay">
-                                <span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span>
-                            </div>
+                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
                         </div>
-                        <div class="brochure-footer">
-                            <h4 class="brochure-title">Brosur Lengkap (A4)</h4>
-                        </div>
+                        <div class="brochure-footer"><h4 class="brochure-title">Brosur Lengkap (A4)</h4></div>
                     </div>
                 </div>
             </section>
@@ -777,6 +689,7 @@
                     <a href="https://www.youtube.com/@aminahboardingschool" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.instagram.com/aminahboardingschool/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/aminahboardingschool" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://wa.me/6281211121485?text=%D8%A8%D9%90%D8%B3%D9%92%D9%85%D9%90%20%D8%A7%D9%84%D9%84%D9%87%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%92%D9%85%D9%90%D9%86%D9%90%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%90%D9%8A%D9%92%D9%85%D9%90%0A%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%88%D8%B1%D8%AD%D9%85%D8%A9%20%D8%A7%D9%84%D9%84%D9%87%20%D9%88%D8%A8%D8%B1%D9%83%D8%A7%D8%AA%D9%87%0A%0ASaya%20ingin%20bertanya%20tentang%20Pesantren%20Aminah%20Boarding%20School.%0A%0Asumber:%20aminahboardingschool.com" target="_blank" class="wa-link"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="footer-right">
@@ -792,15 +705,12 @@
 
     <div id="singleModal" class="gallery-modal" onclick="if(event.target.id==='singleModal') closeSingleModal()">
         <button class="gallery-close" onclick="closeSingleModal()">×</button>
-        
         <div class="gallery-content">
             <div class="gallery-image-container" style="width: 100%; display: flex; justify-content: center;">
                 <img id="modalImage" class="gallery-image" src="" alt="Preview" style="display:none;">
                 <iframe id="modalIframe" class="gallery-iframe" src="" style="display:none;"></iframe>
             </div>
-            
             <div id="modalCaption" class="gallery-caption"></div>
-            
             <a id="downloadBtn" href="#" target="_blank" class="download-btn" style="display:none;">
                 <i class="fas fa-download"></i> Download File
             </a>
@@ -810,48 +720,17 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         
-        // ----------------------------------------
-        // 1. HEADER AUTO-HIDE (Mobile App Feel)
-        // ----------------------------------------
-        let lastScrollY = window.scrollY;
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-
-            // Logika Auto-Hide:
-            // Jika scroll ke bawah DAN posisi bukan di paling atas -> Sembunyikan Nav
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                navbar.classList.add('nav-hidden');
-            } else {
-                navbar.classList.remove('nav-hidden');
-            }
-
-            // Logika Warna Background (Scrolled)
-            if (currentScrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            lastScrollY = currentScrollY;
-        });
-
-        // ----------------------------------------
-        // 2. SPA PAGE SWITCHING
-        // ----------------------------------------
+        // PAGE SWITCHING
         window.switchPage = function(pageName, scrollTargetId = null) {
             const homeView = document.getElementById('home-view');
             const profilView = document.getElementById('profil-view');
             const pendaftaranView = document.getElementById('pendaftaran-view');
             const fasilitasView = document.getElementById('fasilitas-view');
             
-            // Matikan semua link aktif (Atas & Bawah)
             document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
-            document.querySelector('.nav-floating-btn').classList.remove('active'); // Matikan tombol tengah
+            document.querySelector('.nav-floating-btn').classList.remove('active');
 
-            // Sembunyikan semua halaman
             homeView.classList.add('hidden');
             profilView.classList.add('hidden');
             pendaftaranView.classList.add('hidden');
@@ -868,20 +747,17 @@
             } else if (pageName === 'pendaftaran') {
                 pendaftaranView.classList.remove('hidden');
                 activeLinkIds = ['link-daftar'];
-                // Aktifkan Tombol Floating Tengah
                 document.getElementById('bot-pendaftaran').classList.add('active');
             } else if (pageName === 'fasilitas') {
                 fasilitasView.classList.remove('hidden');
                 activeLinkIds = ['link-fasilitas', 'bot-fasilitas'];
             }
 
-            // Nyalakan link yang sesuai
             activeLinkIds.forEach(id => {
                 const el = document.getElementById(id);
                 if(el) el.classList.add('active');
             });
 
-            // Scroll Logic
             if (scrollTargetId) {
                 const target = document.getElementById(scrollTargetId);
                 if(target) target.scrollIntoView({ behavior: 'smooth' });
@@ -890,9 +766,16 @@
             }
         };
 
-        // ----------------------------------------
-        // 3. MODAL LOGIC (Gambar & PDF)
-        // ----------------------------------------
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // MODAL LOGIC
         const modal = document.getElementById('singleModal');
         const modalImg = document.getElementById('modalImage');
         const modalIframe = document.getElementById('modalIframe');
@@ -920,7 +803,6 @@
         }
     });
 
-    // FUNGSI KHUSUS BROSUR PDF
     function openPdfModal(pdfUrl, title) {
         const modal = document.getElementById('singleModal');
         const modalImg = document.getElementById('modalImage');
