@@ -14,7 +14,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-NM1S0VR6EB');
     </script>
 
@@ -30,10 +29,8 @@
             --light: #f8f9fa; 
             --white: #ffffff; 
             --text: #2c3e50; 
-            --shadow: rgba(0,0,0,0.1); 
             --danger: #dc3545;
             --whatsapp: #25D366; 
-            --whatsapp-dark: #128C7E;
             --nav-height: 70px;
             --bottom-nav-height: 70px;
         }
@@ -51,123 +48,80 @@
             height: var(--nav-height);
             display: flex; align-items: center;
         }
-
         nav#navbar.nav-up { transform: translateY(-100%); }
         nav#navbar.scrolled { background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; width: 100%; }
         .logo-icon { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo-icon img { width: 45px; height: 45px; object-fit: contain; }
         .logo-full { font-size: 1.1rem; font-weight: 700; color: var(--white); white-space: nowrap; }
-        
         .nav-links { display: flex; gap: 25px; list-style: none; margin-left: auto; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--white); font-weight: 500; transition: color 0.3s; cursor: pointer; font-size: 0.95rem; }
         .nav-links a:hover { color: var(--secondary); }
-
         nav#navbar.scrolled .logo-full { color: var(--primary); }
         nav#navbar.scrolled .nav-links a { color: var(--text); }
         nav#navbar.scrolled .nav-links a:hover, nav#navbar.scrolled .nav-links a.active { color: var(--secondary); }
-
-        .nav-links .btn-daftar { 
-            background: var(--secondary); color: var(--primary-dark) !important; padding: 0.5rem 1.2rem; 
-            border-radius: 50px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s; 
-        }
+        .nav-links .btn-daftar { background: var(--secondary); color: var(--primary-dark) !important; padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s; }
         .nav-links .btn-daftar:hover { background: #c9a030; transform: translateY(-2px); }
         nav#navbar.scrolled .nav-links .btn-daftar { background: var(--primary); color: var(--white) !important; }
-
         .mobile-menu-btn { display: none; }
         .nav-links a.active { color: var(--secondary) !important; font-weight: 700; }
 
         /* ========================================
-           BOTTOM NAVIGATION (MOBILE - FIXED)
+           BOTTOM NAVIGATION (MOBILE)
            ======================================== */
         .bottom-nav {
-            display: none; 
-            position: fixed; bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
+            display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
             background: var(--white); box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            z-index: 1001; 
-            justify-content: space-around; 
-            align-items: flex-end; /* Align items to bottom */
-            padding-bottom: 10px;
+            z-index: 1001; justify-content: space-around; align-items: flex-end; padding-bottom: 10px;
             border-top-left-radius: 20px; border-top-right-radius: 20px;
         }
-
         .bottom-nav-item {
             display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-            text-decoration: none; color: #999; font-size: 0.7rem; 
-            flex: 1; height: 100%; transition: all 0.3s;
-            padding-bottom: 2px;
+            text-decoration: none; color: #999; font-size: 0.7rem; flex: 1; height: 100%; transition: all 0.3s; padding-bottom: 2px;
         }
         .bottom-nav-item i { font-size: 1.3rem; margin-bottom: 4px; transition: transform 0.2s; }
         .bottom-nav-item.active { color: var(--primary); font-weight: 700; }
         .bottom-nav-item.active i { transform: translateY(-3px); }
-
-        /* --- FLOATING CENTER BUTTON (FIXED) --- */
-        .nav-center-wrapper {
-            position: relative; 
-            /* HAPUS TOP NEGATIF DI SINI AGAR TIDAK TERBANG */
-            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-            flex: 1; height: 100%; padding-bottom: 2px;
-            z-index: 1002;
-        }
-
+        .nav-center-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1; height: 100%; padding-bottom: 2px; z-index: 1002; }
         .nav-floating-btn {
-            position: absolute; 
-            top: -25px; /* HANYA DI SINI KITA ANGKAT TOMBOLNYA */
-            width: 55px; height: 55px;
+            position: absolute; top: -25px; width: 55px; height: 55px;
             background: var(--primary); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(10, 92, 61, 0.4);
-            border: 4px solid var(--white); font-size: 1.4rem;
-            transition: transform 0.2s, background-color 0.3s;
+            text-decoration: none; box-shadow: 0 5px 15px rgba(10, 92, 61, 0.4);
+            border: 4px solid var(--white); font-size: 1.4rem; transition: transform 0.2s, background-color 0.3s;
         }
-
         .nav-floating-btn:active { transform: scale(0.95); }
         .nav-floating-btn.active { background: var(--secondary); color: var(--primary-dark); }
-        
-        .floating-label { 
-            font-size: 0.7rem; font-weight: 700; color: var(--text); 
-            text-align: center; width: 100%;
-            margin-bottom: 0;
-        }
+        .floating-label { margin-top: 35px; font-size: 0.7rem; font-weight: 700; color: var(--text); text-align: center; width: 100%; margin-bottom: 0; }
 
         /* ========================================
-           PAGE LOGIC
+           PAGE SECTIONS
            ======================================== */
         .page-section { display: block; animation: fadeIn 0.5s; padding-top: var(--nav-height); }
         .hidden { display: none !important; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
         section { padding: 4rem 1.5rem; }
         .container { max-width: 1200px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 1.5rem; position: relative; display: block; font-weight: 800; }
         .section-subtitle { text-align: center; color: #666; margin-bottom: 2.5rem; font-size: 1.1rem; padding: 0 1rem; }
 
-        /* HERO */
-        .hero { 
-            position: relative; height: 75vh; min-height: 500px; 
-            display: flex; align-items: center; justify-content: center; text-align: center; 
-            overflow: hidden; margin-top: 0; 
-            background: url('assets/images/hero-pesantren-desktop.png') no-repeat center center; 
-            background-size: cover; background-attachment: fixed;
-        }
+        /* HERO & BASIC SECTIONS */
+        .hero { position: relative; height: 75vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-top: 0; background: url('assets/images/hero-pesantren-desktop.png') no-repeat center center; background-size: cover; background-attachment: fixed; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); }
-
-        /* PROFIL */
+        
+        /* PROFIL STYLES */
         .sambutan-section { padding: 3rem 1.5rem; background-color: var(--white); text-align: center; margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
         .arabic-greeting { font-family: 'Times New Roman', serif; font-size: 2rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1.4; }
         .sambutan-content { max-width: 900px; margin: 1.5rem auto; font-size: 1.1rem; line-height: 1.8; color: #444; }
         .sambutan-content .hadith { font-style: italic; color: var(--primary); font-weight: 600; padding: 1rem; background: #f0f9f4; border-radius: 10px; margin-bottom: 2rem; display: inline-block; }
         .signature { margin-top: 2rem; font-size: 1rem; color: var(--primary-dark); }
-
         .visi-misi { padding: 2rem 1.5rem 5rem; background: transparent; }
         .vm-content-simple { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
         .vm-item { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
         .vm-item h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem; text-align: center; }
         .vm-item ul li { margin-bottom: 0.8rem; padding-left: 1rem; }
 
-        /* PROGRAMS */
+        /* PROGRAMS & FACILITIES */
         .programs { background: var(--light); }
         .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .program-card { background: white; border-radius: 20px; padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; }
@@ -175,8 +129,7 @@
         .program-card h3 { font-size: 1.8rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1; }
         .program-level { display: inline-block; background: #fff8e1; color: var(--secondary); font-weight: 700; font-size: 0.9rem; padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid var(--secondary); }
         .program-card p { font-size: 1rem; color: #555; margin-bottom: 0.5rem; }
-
-        /* FASILITAS COLLAGE */
+        
         .facilities-collage { background: #fff; padding: 2rem 1.5rem; }
         .collage-container { display: flex; flex-direction: column; gap: 3rem; max-width: 1100px; margin: 0 auto; }
         .facility-row { display: flex; align-items: center; gap: 3rem; opacity: 0; animation: fadeIn 1s forwards; background: white; padding: 1.5rem; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; cursor: pointer; }
@@ -189,7 +142,7 @@
         .fac-text-content h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.8rem; font-weight: 800; }
         .fac-text-content p { font-size: 1rem; color: #555; line-height: 1.6; }
 
-        /* OTHER */
+        /* EXTRA SECTIONS */
         .keunggulan { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
         .keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .keunggulan-item { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; gap: 1rem; }
@@ -213,47 +166,74 @@
         .btn-whatsapp-cta:hover { background: var(--whatsapp-dark); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
         .btn-whatsapp-cta i { font-size: 1.8rem; }
 
-        /* FOOTER */
-        footer { background: var(--primary-dark); color: white; padding: 3rem 0 1rem; font-size: 0.95rem; margin-bottom: 0; }
-        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem; }
-        .footer-logo { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-        .footer-logo-img { width: 50px; height: 50px; object-fit: contain; }
-        .footer-logo-text { font-size: 1.4rem; font-weight: 700; color: var(--secondary); }
-        .footer-tagline { display: block; margin-bottom: 1.5rem; font-style: italic; opacity: 0.8; margin-left: 1rem; }
-        .footer-contact-info p { margin-left: 0; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 15px; }
-        .footer-contact-info i { width: 20px; text-align: center; flex-shrink: 0; }
-        .footer-contact-info a { color: white; text-decoration: none; transition: color 0.3s; }
-        .footer-contact-info a:hover { color: var(--secondary); }
-        .footer-socials { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
-        .footer-socials a { color: white; font-size: 1.8rem; transition: transform 0.3s; }
-        .footer-socials a:hover { color: var(--secondary); transform: scale(1.2); }
-        .footer-socials a.wa-link:hover { color: var(--whatsapp); }
-        .footer-map-container { width: 100%; max-width: 500px; height: 240px; border-radius: 15px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); }
-        .footer-map-container iframe { width: 100%; height: 100%; border: 0; }
-        .footer-bottom { text-align: center; padding-top: 1.5rem; padding-bottom: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-bottom p a { color: var(--secondary); text-decoration: none; }
-
         /* VIEW CONTAINERS */
         #pendaftaran-view, #fasilitas-view, #profil-view { background: #f4f4f4; padding-bottom: 4rem; }
         
-        /* BROSUR & PRICING */
-        .schedule-grid, .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-        .schedule-card, .pricing-card, .pricing-footer-info { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; }
-        .schedule-header, .pricing-header { background: var(--secondary); color: var(--primary-dark); padding: 1.5rem; font-weight: 800; font-size: 1.2rem; text-align: center; }
-        .pricing-header { background: var(--primary); color: white; padding: 2rem; }
-        .pricing-header.boarding { background: var(--primary-dark); }
-        .pricing-total { font-size: 2.2rem; font-weight: 800; color: var(--secondary); margin: 10px 0; }
-        .schedule-body, .pricing-body { padding: 1.5rem; }
-        .schedule-item, .pricing-item { margin-bottom: 1.5rem; border-bottom: 1px dashed #ddd; padding-bottom: 1rem; }
-        .schedule-item:last-child, .pricing-item:last-child { border: none; margin: 0; padding: 0; }
-        .wave-title, .pricing-item-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 0.5rem; font-size: 1rem; }
-        .pricing-item-title { display: flex; justify-content: space-between; }
-        .pricing-details { list-style: none; padding-left: 0; font-size: 0.9rem; color: #666; }
-        .pricing-details li::before { content: '•'; color: var(--secondary); padding-right: 5px; font-weight: bold; }
-        .pricing-footer-info { padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .payment-info { background: #e8f5e9; border-left: 6px solid var(--primary); padding: 1.5rem; border-radius: 15px; }
-        .promo-info { background: #fff8e1; border-left: 6px solid var(--danger); padding: 1.5rem; border-radius: 15px; }
-        .bank-details { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 1rem 0; letter-spacing: 1px; }
+        /* SCHEDULE GRID */
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .schedule-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .schedule-header { background: var(--secondary); color: var(--primary-dark); padding: 1.5rem; font-weight: 800; font-size: 1.2rem; text-align: center; }
+        .schedule-body { padding: 1.5rem; }
+        .schedule-item { margin-bottom: 1.5rem; border-bottom: 1px dashed #ddd; padding-bottom: 1rem; }
+        .schedule-item:last-child { border: none; margin: 0; padding: 0; }
+        .wave-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 0.5rem; font-size: 1rem; }
+
+        /* ========================================
+           PRICING GRID (FIXED ALIGNMENT)
+           ======================================== */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; align-items: stretch; }
+        .pricing-card { 
+            background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; 
+            display: flex; flex-direction: column; height: 100%; transition: transform 0.3s;
+        }
+        .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--secondary); }
+        
+        .pricing-header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 2rem 1.5rem; position: relative; overflow: hidden; text-align: center; }
+        .pricing-header.boarding { background: linear-gradient(135deg, #064029, #04291a); }
+        .pricing-header h3 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; position: relative; z-index: 1; letter-spacing: 1px; }
+        .pricing-total { font-size: 2rem; font-weight: 800; color: var(--secondary); margin: 5px 0; position: relative; z-index: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .pricing-subtitle { font-size: 0.85rem; opacity: 0.9; position: relative; z-index: 1; }
+
+        /* KUNCI: Flex 1 agar area putih mengisi ruang sisa, mendorong footer ke bawah */
+        .pricing-table-container { padding: 0; flex: 1; display: flex; flex-direction: column; }
+        
+        .pricing-row { display: flex; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+        .pricing-row:last-child { border-bottom: none; }
+        .pricing-row.header { background: #f8f9fa; font-weight: 800; color: var(--text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #eee; }
+        
+        .col-no { width: 40px; padding: 12px 5px; text-align: center; border-right: 1px solid #f0f0f0; flex-shrink: 0; font-weight: bold; color: #999; }
+        .col-desc { flex: 1; padding: 12px 15px; border-right: 1px solid #f0f0f0; }
+        .col-price { width: 110px; padding: 12px 10px; text-align: right; font-weight: 700; color: var(--text); flex-shrink: 0; background: #fafafa; }
+        
+        .item-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 4px; line-height: 1.3; font-size: 0.95rem; }
+        .item-subtitle { font-size: 0.75rem; color: #888; font-style: italic; display: block; margin-bottom: 8px; }
+        .item-details { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #555; }
+        .item-details li { position: relative; padding-left: 15px; margin-bottom: 3px; line-height: 1.4; }
+        .item-details li::before { content: '•'; color: var(--secondary); position: absolute; left: 0; font-weight: bold; font-size: 1.2em; top: -2px; }
+
+        .pricing-total-row { background: var(--primary-dark); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 1.1rem; margin-top: auto; border-top: 4px solid var(--secondary); }
+
+        /* KEREN: INFO & PROMO SECTION */
+        .info-promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 3rem; margin-bottom: 2rem; }
+        
+        .info-card-style { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        
+        /* Pembayaran Card */
+        .card-payment { border-left: 6px solid #00a39e; }
+        .card-payment .card-head { background: #e0f2f1; padding: 1.5rem; display: flex; align-items: center; gap: 15px; color: #00695c; }
+        .card-payment .card-head i { font-size: 1.8rem; }
+        .card-payment .card-body { padding: 1.5rem; }
+        .bsi-box { background: #f5fcfb; border: 1px dashed #00a39e; border-radius: 10px; padding: 1rem; text-align: center; margin: 1rem 0; }
+        .bsi-number { display: block; font-size: 1.8rem; font-weight: 900; color: #00a39e; letter-spacing: 1px; margin: 5px 0; }
+        
+        /* Promo Card */
+        .card-promo { border-left: 6px solid #d32f2f; }
+        .card-promo .card-head { background: #ffebee; padding: 1.5rem; display: flex; align-items: center; gap: 15px; color: #c62828; }
+        .card-promo .card-head i { font-size: 1.8rem; }
+        .card-promo .card-body { padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; height: 100%; text-align: center; }
+        .discount-badge { display: inline-block; background: #d32f2f; color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; font-size: 2.5rem; margin: 10px 0; transform: rotate(-2deg); box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3); }
+        
+        /* BROSUR GALLERY */
         .brochure-section { text-align: center; margin-bottom: 4rem; }
         .brochure-gallery-grid { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
         .brochure-card { position: relative; background: #fff; border-radius: 15px; width: 300px; height: 380px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; overflow: hidden; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; }
@@ -277,34 +257,49 @@
         .download-btn { margin-top: 15px; background: var(--secondary); color: var(--primary-dark); padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
         .download-btn:hover { background: #fff; color: var(--primary); transform: translateY(-2px); }
 
+        /* FOOTER */
+        footer { background: var(--primary-dark); color: white; padding: 3rem 0 1rem; font-size: 0.95rem; margin-bottom: 0; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem; }
+        .footer-logo { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .footer-logo-img { width: 50px; height: 50px; object-fit: contain; }
+        .footer-logo-text { font-size: 1.4rem; font-weight: 700; color: var(--secondary); }
+        .footer-tagline { display: block; margin-bottom: 1.5rem; font-style: italic; opacity: 0.8; margin-left: 1rem; }
+        .footer-contact-info p { margin-left: 0; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 15px; }
+        .footer-contact-info i { width: 20px; text-align: center; flex-shrink: 0; }
+        .footer-contact-info a { color: white; text-decoration: none; transition: color 0.3s; }
+        .footer-contact-info a:hover { color: var(--secondary); }
+        .footer-socials { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .footer-socials a { color: white; font-size: 1.8rem; transition: transform 0.3s; }
+        .footer-socials a:hover { color: var(--secondary); transform: scale(1.2); }
+        .footer-socials a.wa-link:hover { color: var(--whatsapp); }
+        .footer-map-container { width: 100%; max-width: 500px; height: 240px; border-radius: 15px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); }
+        .footer-map-container iframe { width: 100%; height: 100%; border: 0; }
+        .footer-bottom { text-align: center; padding-top: 1.5rem; padding-bottom: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-bottom p a { color: var(--secondary); text-decoration: none; }
+
         /* RESPONSIVE CSS */
         @media (max-width: 768px) {
             body { padding-bottom: 0; } 
             .nav-links { display: none; }
             .bottom-nav { display: flex; }
-            
             .hero { background-image: url('assets/images/hero-pesantren-mobile.png') !important; height: 60vh; background-attachment: scroll; }
-            
-            /* FOOTER MOBILE - DIPERBAIKI (TIDAK ADA CELAH) */
-            footer { 
-                padding: 2rem 0 0 0; /* Reset padding default */
-                padding-bottom: 90px; /* Ruang untuk navigasi fixed */
-                margin-bottom: 0; /* Hapus margin eksternal yang bikin renggang */
-            } 
-            
+            footer { padding: 2rem 0 6rem 0; margin-bottom: 85px; } 
             .footer-content { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; padding: 0 1.5rem; }
             .footer-left .footer-logo, .footer-contact-info p { justify-content: center; margin-bottom: 0.5rem; }
             .footer-contact-info p { gap: 10px; }
             .footer-socials { margin-top: 0.5rem; gap: 1rem; }
             .footer-bottom { padding-top: 1rem; padding-bottom: 1rem; font-size: 0.75rem; border: none; }
-
             .arabic-greeting { font-size: 1.3rem; margin-bottom: 0.2rem; }
             .program-cards { grid-template-columns: 1fr; }
             .simple-list-grid { gap: 1.5rem; } 
-            
             .facility-row { flex-direction: column !important; text-align: center; gap: 1rem; }
             .fac-image-wrapper { height: 250px; width: 100%; }
             .fac-text-content { padding: 1rem; }
+            .col-no { width: 30px; padding: 10px 2px; font-size: 0.8rem; }
+            .col-price { width: 90px; padding: 10px 5px; font-size: 0.85rem; }
+            .col-desc { padding: 10px 5px; }
+            .pricing-total-row { font-size: 1rem; }
+            .info-promo-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -335,19 +330,16 @@
             <i class="fas fa-user-circle"></i>
             <span>Profil</span>
         </a>
-        
         <div class="nav-center-wrapper">
             <a href="#" onclick="switchPage('pendaftaran')" class="nav-floating-btn" id="bot-pendaftaran">
                 <i class="fas fa-pen-fancy"></i>
             </a>
             <span class="floating-label">Daftar</span>
         </div>
-
         <a href="#" onclick="switchPage('fasilitas')" class="bottom-nav-item" id="bot-fasilitas">
             <i class="fas fa-mosque"></i>
             <span>Fasilitas</span>
         </a>
-        
         <a href="https://wa.me/6281211121485?text=%D8%A8%D9%90%D8%B3%D9%92%D9%85%D9%90%20%D8%A7%D9%84%D9%84%D9%87%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%92%D9%85%D9%90%D9%86%D9%90%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%90%D9%8A%D9%92%D9%85%D9%90%0A%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%88%D8%B1%D8%AD%D9%85%D8%A9%20%D8%A7%D9%84%D9%84%D9%87%20%D9%88%D8%A8%D8%B1%D9%83%D8%A7%D8%AA%D9%87%0A%0ASaya%20ingin%20bertanya%20tentang%20Pesantren%20Aminah%20Boarding%20School.%0A%0A-%0Asumber:%20aminahboardingschool.com" target="_blank" class="bottom-nav-item">
             <i class="fab fa-whatsapp"></i>
             <span>WA</span>
@@ -587,45 +579,232 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3>FULLDAY</h3>
-                        <div class="pricing-total">Rp 12.700.000</div>
-                        <p style="margin-top: 5px; opacity: 0.9;">Total Biaya Awal Masuk</p>
+                        <h3>ULA (FULLDAY)</h3>
+                        <div class="pricing-total">Rp 12.000.000</div>
+                        <p class="pricing-subtitle">Total Biaya Awal Masuk</p>
                     </div>
-                    <div class="pricing-body">
-                        <div class="pricing-item"><div class="pricing-item-title"><span>1. POS (Sekali Bayar)</span><span class="pricing-item-price">Rp 7.000.000</span></div></div>
-                        <div class="pricing-item"><div class="pricing-item-title"><span>2. Kegiatan (Per Tahun)</span><span class="pricing-item-price">Rp 4.000.000</span></div></div>
-                        <div class="pricing-item"><div class="pricing-item-title"><span>3. SPP (Per Bulan)</span><span class="pricing-item-price">Rp 1.800.000</span></div></div>
+                    <div class="pricing-table-container">
+                        <div class="pricing-row header">
+                            <div class="col-no">NO</div>
+                            <div class="col-desc">JENIS BIAYA</div>
+                            <div class="col-price">NOMINAL</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">1</div>
+                            <div class="col-desc">
+                                <span class="item-title">POS (Uang Pangkal)</span>
+                                <span class="item-subtitle">Pengembangan Operasional Sekolah (Sekali Bayar)</span>
+                                <ul class="item-details">
+                                    <li>Maintenance Infrastruktur</li>
+                                    <li>Sarana dan Prasarana</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 7.000.000</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">2</div>
+                            <div class="col-desc">
+                                <span class="item-title">KEGIATAN SANTRI (KS)</span>
+                                <span class="item-subtitle">Kegiatan Satu Tahun (Dibayar per Tahun)</span>
+                                <ul class="item-details">
+                                    <li>Program Akademik & Ujian</li>
+                                    <li>Kegiatan Pembinaan Karakter</li>
+                                    <li>Pengembangan SDM</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 4.000.000</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">3</div>
+                            <div class="col-desc">
+                                <span class="item-title">SPP BULANAN</span>
+                                <span class="item-subtitle">(dibayar per bulan)</span>
+                                <ul class="item-details">
+                                    <li>Gaji Guru dan Staff</li>
+                                    <li>Operasional Bulanan (listrik, internet, dll.)</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 1.000.000</div>
+                        </div>
+                    </div>
+                    <div class="pricing-total-row">
+                        <span>TOTAL BIAYA</span>
+                        <span>Rp 12.000.000</span>
                     </div>
                 </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>WUSTHA & ULYA (FD)</h3>
+                        <div class="pricing-total">Rp 12.800.000</div>
+                        <p class="pricing-subtitle">Total Biaya Awal Masuk</p>
+                    </div>
+                    <div class="pricing-table-container">
+                        <div class="pricing-row header">
+                            <div class="col-no">NO</div>
+                            <div class="col-desc">JENIS BIAYA</div>
+                            <div class="col-price">NOMINAL</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">1</div>
+                            <div class="col-desc">
+                                <span class="item-title">POS (Uang Pangkal)</span>
+                                <span class="item-subtitle">Pengembangan Operasional Sekolah (Sekali Bayar)</span>
+                                <ul class="item-details">
+                                    <li>Maintenance Infrastruktur</li>
+                                    <li>Sarana dan Prasarana</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 7.000.000</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">2</div>
+                            <div class="col-desc">
+                                <span class="item-title">KEGIATAN SANTRI (KS)</span>
+                                <span class="item-subtitle">Kegiatan Satu Tahun (Dibayar per Tahun)</span>
+                                <ul class="item-details">
+                                    <li>Program Akademik & Ujian</li>
+                                    <li>Kegiatan Pembinaan Karakter</li>
+                                    <li>Pengembangan SDM</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 4.000.000</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">3</div>
+                            <div class="col-desc">
+                                <span class="item-title">SPP BULANAN</span>
+                                <span class="item-subtitle">(dibayar per bulan)</span>
+                                <ul class="item-details">
+                                    <li>Gaji Guru dan Staff</li>
+                                    <li>Catering (Makan Siang)</li>
+                                    <li>Operasional Bulanan</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 1.800.000</div>
+                        </div>
+                    </div>
+                    <div class="pricing-total-row">
+                        <span>TOTAL BIAYA</span>
+                        <span>Rp 12.800.000</span>
+                    </div>
+                </div>
+
                 <div class="pricing-card">
                     <div class="pricing-header boarding">
                         <h3>BOARDING</h3>
                         <div class="pricing-total">Rp 17.000.000</div>
-                        <p style="margin-top: 5px; opacity: 0.9;">Total Biaya Awal Masuk</p>
+                        <p class="pricing-subtitle">Total Biaya Awal Masuk</p>
                     </div>
-                    <div class="pricing-body">
-                        <div class="pricing-item"><div class="pricing-item-title"><span>1. POS (Sekali Bayar)</span><span class="pricing-item-price">Rp 10.000.000</span></div></div>
-                        <div class="pricing-item"><div class="pricing-item-title"><span>2. Kegiatan (Per Tahun)</span><span class="pricing-item-price">Rp 4.500.000</span></div></div>
-                        <div class="pricing-item"><div class="pricing-item-title"><span>3. SPP (Per Bulan)</span><span class="pricing-item-price">Rp 2.500.000</span></div></div>
+                    <div class="pricing-table-container">
+                        <div class="pricing-row header">
+                            <div class="col-no">NO</div>
+                            <div class="col-desc">JENIS BIAYA</div>
+                            <div class="col-price">NOMINAL</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">1</div>
+                            <div class="col-desc">
+                                <span class="item-title">POS (Uang Pangkal)</span>
+                                <span class="item-subtitle">Pengembangan Operasional Sekolah (Sekali Bayar)</span>
+                                <ul class="item-details">
+                                    <li>Maintenance Infrastruktur</li>
+                                    <li>Sarana dan Prasarana</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 10.000.000</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">2</div>
+                            <div class="col-desc">
+                                <span class="item-title">KEGIATAN SANTRI (KS)</span>
+                                <span class="item-subtitle">Kegiatan Satu Tahun (Dibayar per Tahun)</span>
+                                <ul class="item-details">
+                                    <li>Program Akademik & Ujian</li>
+                                    <li>Kegiatan Pembinaan Karakter</li>
+                                    <li>Pengembangan SDM</li>
+                                    <li>Operasional Kesantrian</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 4.500.000</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="col-no">3</div>
+                            <div class="col-desc">
+                                <span class="item-title">SPP BULANAN</span>
+                                <span class="item-subtitle">(dibayar per bulan)</span>
+                                <ul class="item-details">
+                                    <li>Gaji Guru dan Staff</li>
+                                    <li>Catering (3x Sehari)</li>
+                                    <li>Operasional Bulanan</li>
+                                </ul>
+                            </div>
+                            <div class="col-price">Rp 2.500.000</div>
+                        </div>
+                    </div>
+                    <div class="pricing-total-row">
+                        <span>TOTAL BIAYA</span>
+                        <span>Rp 17.000.000</span>
                     </div>
                 </div>
             </div>
 
-            <div class="pricing-footer-info">
-                <div class="payment-info">
-                    <h4><i class="fas fa-credit-card"></i> Informasi Pembayaran</h4>
-                    <p>Transfer ke Rekening BSI: <span class="bank-details">4435801560</span> a.n <b>YAYASAN AMINAH SALIM</b></p>
+            <div class="info-promo-grid">
+                <div class="info-card-style card-payment">
+                    <div class="card-head">
+                        <i class="fas fa-credit-card"></i>
+                        <h3>INFORMASI PEMBAYARAN</h3>
+                    </div>
+                    <div class="card-body">
+                        <p style="text-align: center; color: #555;">Pembayaran dapat ditransfer melalui:</p>
+                        <div class="bsi-box">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bank_Syariah_Indonesia.svg" alt="BSI" style="height: 30px; display: block; margin: 0 auto 5px;">
+                            <span class="bsi-number">4435801560</span>
+                            <span style="display: block; font-weight: 600; color: #333;">a.n YAYASAN AMINAH SALIM</span>
+                        </div>
+                        <p style="text-align: center; font-size: 0.9rem; margin-top: 1rem; color: #777;">
+                            Mohon kirimkan bukti transfer ke WhatsApp Admin:
+                        </p>
+                        <div style="text-align: center; margin-top: 5px;">
+                            <a href="https://wa.me/6281211121485" target="_blank" style="color: var(--whatsapp); font-weight: 800; text-decoration: none; font-size: 1.1rem;">
+                                <i class="fab fa-whatsapp"></i> 0812-111-21-485
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="promo-info">
-                    <h4><i class="fas fa-tags"></i> PROMO SPESIAL</h4>
-                    <h2 style="color: var(--danger); margin: 10px 0;">DISKON 50%</h2>
-                    <p><b>Biaya Pendaftaran</b> untuk 20 pendaftar pertama.</p>
+
+                <div class="info-card-style card-promo">
+                    <div class="card-head">
+                        <i class="fas fa-tags"></i>
+                        <h3>PROMO SPESIAL</h3>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 1.1rem; color: #555;">Dapatkan Potongan Harga Khusus!</p>
+                        <span class="discount-badge">DISKON 50%</span>
+                        <h4 style="font-size: 1.4rem; color: #333; margin: 10px 0;">Biaya Pendaftaran</h4>
+                        <p style="color: #d32f2f; font-weight: 600; background: #ffebee; display: inline-block; padding: 5px 15px; border-radius: 50px; border: 1px solid #ffcdd2;">
+                            <i class="fas fa-hourglass-half"></i> Hanya untuk 20 Pendaftar Pertama
+                        </p>
+                        <div style="margin-top: 2rem;">
+                            <a href="https://aminahboardingschool.com/pendaftaran/" target="_blank" class="btn-daftar" style="background: #d32f2f; color: white; text-decoration: none; padding: 10px 25px; border-radius: 50px; font-weight: bold; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);">
+                                Ambil Promo Sekarang <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <section class="brochure-section">
                 <h3 class="section-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Galeri Brosur Informasi</h3>
                 <div class="brochure-gallery-grid">
+                    <div class="brochure-card" onclick="openPdfModal('assets/images/biaya-ula.jpg', 'Rincian Biaya Ula')">
+                        <div class="brochure-image-container">
+                            <img src="assets/images/biaya-ula.jpg" alt="Rincian Biaya Ula" class="brochure-thumb">
+                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
+                        </div>
+                        <div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya Ula</h4></div>
+                    </div>
+
                     <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-front.jpg', 'Brosur Halaman Depan')">
                         <div class="brochure-image-container">
                             <img src="assets/images/brosur-front.jpg" alt="Brosur Depan" class="brochure-thumb">
