@@ -34,18 +34,18 @@
             --nav-height: 70px;
             --bottom-nav-height: 70px;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); overflow-x: hidden; background-color: #f4f4f4; padding-bottom: 0; margin: 0; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text); background-color: #f4f4f4; padding-bottom: 0; margin: 0; }
         html { scroll-behavior: smooth; }
 
         /* ========================================
-           NAVBAR (DESKTOP - FIXED TOP)
+           NAVBAR (FIXED TOP - NO ANIMATION)
            ======================================== */
         nav#navbar { 
             position: fixed; top: 0; width: 100%; z-index: 1000; 
             padding: 0.5rem 0; background: var(--primary); height: var(--nav-height); 
             display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
         }
-        nav#navbar.scrolled { background: var(--white); } /* Hanya ubah warna bg saat scroll */
+        nav#navbar.scrolled { background: var(--white); }
         
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; width: 100%; }
         .logo-icon { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -65,12 +65,11 @@
         .mobile-menu-btn { display: none; }
 
         /* ========================================
-           BOTTOM NAV (MOBILE - STABIL)
+           BOTTOM NAV (MOBILE - FIXED)
            ======================================== */
         .bottom-nav {
             display: none; 
-            position: fixed; /* KUNCI: Selalu nempel di layar bawah */
-            bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
+            position: fixed; bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
             background: var(--white); box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
             z-index: 1001; justify-content: space-around; align-items: flex-end; 
             padding-bottom: 10px;
@@ -85,7 +84,6 @@
         .bottom-nav-item.active { color: var(--primary); font-weight: 700; }
         .bottom-nav-item.active i { transform: translateY(-3px); }
 
-        /* Tombol Tengah (Manual Adjustment) */
         .nav-center-wrapper {
             position: relative; 
             display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
@@ -93,7 +91,7 @@
             z-index: 1002;
         }
         .nav-floating-btn {
-            position: absolute; top: -25px; /* Posisi tombol melayang */
+            position: absolute; top: -25px; 
             width: 55px; height: 55px;
             background: var(--primary); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -121,18 +119,21 @@
         .hero { position: relative; height: 75vh; min-height: 500px; background: url('assets/images/hero-pesantren-desktop.png') center/cover fixed; display: flex; align-items: center; justify-content: center; }
         .hero-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.1); }
 
-        /* PROGRAMS & KEUNGGULAN */
+        /* PROGRAMS GRID */
         .programs { background: var(--light); }
         .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .program-card { background: white; border-radius: 20px; padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; }
         .program-card:hover { transform: translateY(-10px); border-color: var(--secondary); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .program-card h3 { font-size: 1.8rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1; }
         .program-level { display: inline-block; background: #fff8e1; color: var(--secondary); font-weight: 700; font-size: 0.9rem; padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid var(--secondary); }
-        
+        .program-card p { font-size: 1rem; color: #555; margin-bottom: 0.5rem; }
+
+        /* KEUNGGULAN */
         .keunggulan { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
         .keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .keunggulan-item { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; gap: 1rem; }
         
+        /* PROGRAM UNGGULAN (DIPERBAIKI MOBILE-NYA) */
         .program-unggulan { background: var(--white); }
         .program-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
         .program-item { background: linear-gradient(135deg, var(--white) 0%, #fafafa 100%); padding: 2.5rem 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.08); transition: all 0.4s; position: relative; overflow: hidden; }
@@ -163,9 +164,16 @@
         .vm-item h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem; text-align: center; }
         .vm-item ul li { margin-bottom: 0.8rem; padding-left: 1rem; }
 
+        /* FASILITAS COLLAGE (DIPERBAIKI MOBILE-NYA) */
         .facilities-collage { background: #fff; padding: 2rem 1.5rem; }
         .collage-container { display: flex; flex-direction: column; gap: 3rem; max-width: 1100px; margin: 0 auto; }
-        .facility-row { display: flex; align-items: center; gap: 3rem; opacity: 0; animation: fadeIn 1s forwards; background: white; padding: 1.5rem; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; cursor: pointer; }
+        .facility-row { 
+            display: flex; align-items: center; gap: 3rem; 
+            opacity: 0; animation: fadeIn 1s forwards; 
+            background: white; padding: 1.5rem; border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transition: transform 0.3s; cursor: pointer; 
+        }
         .facility-row:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .facility-row:nth-child(even) { flex-direction: row-reverse; } 
         .fac-image-wrapper { flex: 1; border-radius: 15px; overflow: hidden; height: 280px; }
@@ -173,6 +181,7 @@
         .facility-row:hover .fac-image-wrapper img { transform: scale(1.1); }
         .fac-text-content { flex: 1; padding: 0 1rem; }
         .fac-text-content h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.8rem; font-weight: 800; }
+        .fac-text-content p { font-size: 1rem; color: #555; line-height: 1.6; }
         
         .program-fasilitas-section { background: var(--white); text-align: center; padding-top: 3rem; }
         .feature-list-wrapper { max-width: 900px; margin: 0 auto; padding: 2rem; background: var(--light); border-radius: 20px; }
@@ -184,10 +193,11 @@
         /* ========================================
            PENDAFTARAN & PRICING
            ======================================== */
-        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-        .schedule-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; max-width: 850px; margin-left: auto; margin-right: auto; }
+        .schedule-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; transition: transform 0.3s; }
+        .schedule-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--secondary); }
         .schedule-header { background: var(--secondary); color: var(--primary-dark); padding: 1.5rem; font-weight: 800; font-size: 1.2rem; text-align: center; }
-        .schedule-body { padding: 1.5rem; }
+        .schedule-body { padding: 1.5rem; flex: 1; }
         .schedule-item { margin-bottom: 1.5rem; border-bottom: 1px dashed #ddd; padding-bottom: 1rem; }
         .wave-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 0.5rem; font-size: 1rem; }
 
@@ -216,7 +226,6 @@
 
         .pricing-total-row { background: var(--primary-dark); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 1.1rem; margin-top: auto; border-top: 4px solid var(--secondary); }
 
-        /* INFO & PROMO */
         .info-promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 3rem; margin-bottom: 2rem; }
         .info-card-style { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 100%; border: 1px solid #eee; }
         .card-payment { border-top: 5px solid #00a39e; }
@@ -269,17 +278,33 @@
         .gallery-image { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 10px; }
         .download-btn { margin-top: 15px; background: var(--secondary); color: var(--primary-dark); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE CSS */
         @media (max-width: 768px) {
             body { padding-bottom: 0; }
             .nav-links { display: none; }
             .bottom-nav { display: flex; }
             .hero { background-image: url('assets/images/hero-pesantren-mobile.png') !important; height: 60vh; background-attachment: scroll; }
             
+            /* Jarak Mobile */
+            .schedule-grid { padding: 0 15px; gap: 2rem; }
             .pricing-grid { gap: 2rem; padding: 0 15px; }
             .info-promo-grid { padding: 0 15px; }
             
-            /* Footer Fix: Padding bawah untuk kompensasi menu fixed */
+            /* FASILITAS MOBILE FIX: Rapi dan tidak mepet */
+            .facility-row { 
+                flex-direction: column !important; text-align: center; gap: 1rem; 
+                margin: 0 15px; /* Jarak aman dari pinggir layar */
+            }
+            .fac-image-wrapper { height: 250px; width: 100%; }
+            .fac-text-content { padding: 1rem; }
+
+            /* PROGRAM UNGGULAN MOBILE FIX: 1 Kolom Rapi */
+            .program-cards { 
+                grid-template-columns: 1fr; 
+                padding: 0 15px; /* Jarak aman */
+            }
+
+            /* Footer Fix */
             footer { padding-bottom: 95px; margin-bottom: 0; }
             .footer-content { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; padding: 0 1.5rem; }
             .footer-left .footer-logo, .footer-contact-info p { justify-content: center; margin-bottom: 0.5rem; }
@@ -583,10 +608,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             let lastScrollY = window.scrollY;
             const navbar = document.getElementById('navbar');
+            
+            // LOGIKA AUTO HIDE HANYA NAVBAR ATAS
             window.addEventListener('scroll', () => {
                 const currentScrollY = window.scrollY;
+                if (currentScrollY > lastScrollY && currentScrollY > 100) navbar.classList.add('nav-up');
+                else navbar.classList.remove('nav-up');
+                
                 if (currentScrollY > 50) navbar.classList.add('scrolled');
                 else navbar.classList.remove('scrolled');
+                
                 lastScrollY = currentScrollY;
             });
 
