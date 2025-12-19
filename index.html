@@ -25,7 +25,7 @@
         :root {
             --primary: #0a5c3d; 
             --primary-dark: #064029; 
-            --secondary: #d4af37;
+            --secondary: #d4af37; 
             --light: #f8f9fa; 
             --white: #ffffff; 
             --text: #2c3e50; 
@@ -34,61 +34,72 @@
             --nav-height: 70px;
             --bottom-nav-height: 70px;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); overflow-x: hidden; background-color: #f4f4f4;}
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); overflow-x: hidden; background-color: #f4f4f4; padding-bottom: 0; margin: 0; }
         html { scroll-behavior: smooth; }
 
         /* ========================================
-           NAVIGATION (DESKTOP)
+           NAVBAR (DESKTOP - FIXED TOP)
            ======================================== */
         nav#navbar { 
-            position: fixed; top: 0; width: 100%; z-index: 1000; transition: transform 0.3s ease-in-out, background-color 0.3s, box-shadow 0.3s; 
-            padding: 0.5rem 0;
-            background: var(--primary); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            height: var(--nav-height);
-            display: flex; align-items: center;
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            padding: 0.5rem 0; background: var(--primary); height: var(--nav-height); 
+            display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
         }
-        nav#navbar.nav-up { transform: translateY(-100%); }
-        nav#navbar.scrolled { background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        nav#navbar.scrolled { background: var(--white); } /* Hanya ubah warna bg saat scroll */
+        
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; width: 100%; }
         .logo-icon { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo-icon img { width: 45px; height: 45px; object-fit: contain; }
         .logo-full { font-size: 1.1rem; font-weight: 700; color: var(--white); white-space: nowrap; }
-        .nav-links { display: flex; gap: 25px; list-style: none; margin-left: auto; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--white); font-weight: 500; transition: color 0.3s; cursor: pointer; font-size: 0.95rem; }
-        .nav-links a:hover { color: var(--secondary); }
         nav#navbar.scrolled .logo-full { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 20px; list-style: none; margin-left: auto; align-items: center; }
+        .nav-links a { text-decoration: none; color: white; font-weight: 500; font-size: 0.95rem; cursor: pointer; }
         nav#navbar.scrolled .nav-links a { color: var(--text); }
         nav#navbar.scrolled .nav-links a:hover, nav#navbar.scrolled .nav-links a.active { color: var(--secondary); }
-        .nav-links .btn-daftar { background: var(--secondary); color: var(--primary-dark) !important; padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s; }
+        .nav-links .btn-daftar { background: var(--secondary); color: var(--primary-dark) !important; padding: 0.5rem 1.2rem; border-radius: 50px; font-weight: 700; transition: all 0.3s; }
         .nav-links .btn-daftar:hover { background: #c9a030; transform: translateY(-2px); }
         nav#navbar.scrolled .nav-links .btn-daftar { background: var(--primary); color: var(--white) !important; }
-        .mobile-menu-btn { display: none; }
+        
         .nav-links a.active { color: var(--secondary) !important; font-weight: 700; }
+        .mobile-menu-btn { display: none; }
 
         /* ========================================
-           BOTTOM NAVIGATION (MOBILE)
+           BOTTOM NAV (MOBILE - STABIL)
            ======================================== */
         .bottom-nav {
-            display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
+            display: none; 
+            position: fixed; /* KUNCI: Selalu nempel di layar bawah */
+            bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
             background: var(--white); box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            z-index: 1001; justify-content: space-around; align-items: flex-end; padding-bottom: 10px;
+            z-index: 1001; justify-content: space-around; align-items: flex-end; 
+            padding-bottom: 10px;
             border-top-left-radius: 20px; border-top-right-radius: 20px;
         }
         .bottom-nav-item {
             display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-            text-decoration: none; color: #999; font-size: 0.7rem; flex: 1; height: 100%; transition: all 0.3s; padding-bottom: 2px;
+            text-decoration: none; color: #999; font-size: 0.7rem; flex: 1; height: 100%; 
+            padding-bottom: 2px; transition: all 0.3s;
         }
         .bottom-nav-item i { font-size: 1.3rem; margin-bottom: 4px; transition: transform 0.2s; }
         .bottom-nav-item.active { color: var(--primary); font-weight: 700; }
         .bottom-nav-item.active i { transform: translateY(-3px); }
-        .nav-center-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1; height: 100%; padding-bottom: 2px; z-index: 1002; }
+
+        /* Tombol Tengah (Manual Adjustment) */
+        .nav-center-wrapper {
+            position: relative; 
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+            flex: 1; height: 100%; padding-bottom: 2px;
+            z-index: 1002;
+        }
         .nav-floating-btn {
-            position: absolute; top: -25px; width: 55px; height: 55px;
+            position: absolute; top: -25px; /* Posisi tombol melayang */
+            width: 55px; height: 55px;
             background: var(--primary); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             text-decoration: none; box-shadow: 0 5px 15px rgba(10, 92, 61, 0.4);
-            border: 4px solid var(--white); font-size: 1.4rem; transition: transform 0.2s, background-color 0.3s;
+            border: 4px solid var(--white); font-size: 1.4rem;
+            transition: transform 0.2s, background-color 0.3s;
         }
         .nav-floating-btn:active { transform: scale(0.95); }
         .nav-floating-btn.active { background: var(--secondary); color: var(--primary-dark); }
@@ -100,36 +111,58 @@
         .page-section { display: block; animation: fadeIn 0.5s; padding-top: var(--nav-height); }
         .hidden { display: none !important; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
         section { padding: 4rem 1.5rem; }
         .container { max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 1.5rem; position: relative; display: block; font-weight: 800; }
+        .section-title { text-align: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 1.5rem; font-weight: 800; }
         .section-subtitle { text-align: center; color: #666; margin-bottom: 2.5rem; font-size: 1.1rem; padding: 0 1rem; }
 
-        /* HERO & BASIC SECTIONS */
-        .hero { position: relative; height: 75vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-top: 0; background: url('assets/images/hero-pesantren-desktop.png') no-repeat center center; background-size: cover; background-attachment: fixed; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); }
-        
-        /* PROFIL STYLES */
-        .sambutan-section { padding: 3rem 1.5rem; background-color: var(--white); text-align: center; margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
-        .arabic-greeting { font-family: 'Times New Roman', serif; font-size: 2rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1.4; }
-        .sambutan-content { max-width: 900px; margin: 1.5rem auto; font-size: 1.1rem; line-height: 1.8; color: #444; }
-        .sambutan-content .hadith { font-style: italic; color: var(--primary); font-weight: 600; padding: 1rem; background: #f0f9f4; border-radius: 10px; margin-bottom: 2rem; display: inline-block; }
-        .signature { margin-top: 2rem; font-size: 1rem; color: var(--primary-dark); }
-        .visi-misi { padding: 2rem 1.5rem 5rem; background: transparent; }
-        .vm-content-simple { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
-        .vm-item { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .vm-item h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem; text-align: center; }
-        .vm-item ul li { margin-bottom: 0.8rem; padding-left: 1rem; }
+        /* HERO */
+        .hero { position: relative; height: 75vh; min-height: 500px; background: url('assets/images/hero-pesantren-desktop.png') center/cover fixed; display: flex; align-items: center; justify-content: center; }
+        .hero-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.1); }
 
-        /* PROGRAMS & FACILITIES */
+        /* PROGRAMS & KEUNGGULAN */
         .programs { background: var(--light); }
         .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .program-card { background: white; border-radius: 20px; padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #eee; }
         .program-card:hover { transform: translateY(-10px); border-color: var(--secondary); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .program-card h3 { font-size: 1.8rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1; }
         .program-level { display: inline-block; background: #fff8e1; color: var(--secondary); font-weight: 700; font-size: 0.9rem; padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid var(--secondary); }
-        .program-card p { font-size: 1rem; color: #555; margin-bottom: 0.5rem; }
         
+        .keunggulan { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
+        .keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .keunggulan-item { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; gap: 1rem; }
+        
+        .program-unggulan { background: var(--white); }
+        .program-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .program-item { background: linear-gradient(135deg, var(--white) 0%, #fafafa 100%); padding: 2.5rem 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.08); transition: all 0.4s; position: relative; overflow: hidden; }
+        .program-item:hover { transform: translateY(-10px); border: 1px solid var(--secondary); }
+        .program-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(10, 92, 61, 0.3); }
+        .program-icon-wrapper i { font-size: 2.2rem; color: var(--secondary); }
+
+        .video-section { padding: 4rem 1.5rem; background-color: var(--light); text-align: center; }
+        .video-responsive { max-width: 900px; margin: 0 auto; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); border: 5px solid white; }
+        .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .cta-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; text-align: center; padding: 5rem 1.5rem; }
+        .btn-whatsapp-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--whatsapp); color: white; padding: 1.2rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 1.2rem; transition: all 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .btn-whatsapp-cta:hover { background: var(--whatsapp-dark); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .btn-whatsapp-cta i { font-size: 1.8rem; }
+
+        /* ========================================
+           PROFIL & FASILITAS
+           ======================================== */
+        .sambutan-section { padding: 3rem 1.5rem; background-color: var(--white); text-align: center; margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
+        .arabic-greeting { font-family: 'Times New Roman', serif; font-size: 2rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1.4; }
+        .sambutan-content { max-width: 900px; margin: 1.5rem auto; font-size: 1.1rem; line-height: 1.8; color: #444; }
+        .sambutan-content .hadith { font-style: italic; color: var(--primary); font-weight: 600; padding: 1rem; background: #f0f9f4; border-radius: 10px; margin-bottom: 2rem; display: inline-block; }
+        .signature { margin-top: 2rem; font-size: 1rem; color: var(--primary-dark); }
+        .visi-misi { padding: 2rem 1.5rem 5rem; }
+        .vm-content-simple { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+        .vm-item { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .vm-item h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem; text-align: center; }
+        .vm-item ul li { margin-bottom: 0.8rem; padding-left: 1rem; }
+
         .facilities-collage { background: #fff; padding: 2rem 1.5rem; }
         .collage-container { display: flex; flex-direction: column; gap: 3rem; max-width: 1100px; margin: 0 auto; }
         .facility-row { display: flex; align-items: center; gap: 3rem; opacity: 0; animation: fadeIn 1s forwards; background: white; padding: 1.5rem; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; cursor: pointer; }
@@ -140,126 +173,78 @@
         .facility-row:hover .fac-image-wrapper img { transform: scale(1.1); }
         .fac-text-content { flex: 1; padding: 0 1rem; }
         .fac-text-content h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.8rem; font-weight: 800; }
-        .fac-text-content p { font-size: 1rem; color: #555; line-height: 1.6; }
-
-        /* EXTRA SECTIONS */
-        .keunggulan { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
-        .keunggulan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .keunggulan-item { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; gap: 1rem; }
-        .program-unggulan { background: var(--white); }
-        .program-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-        .program-item { background: linear-gradient(135deg, var(--white) 0%, #fafafa 100%); padding: 2.5rem 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.08); transition: all 0.4s; position: relative; overflow: hidden; }
-        .program-item:hover { transform: translateY(-10px); border: 1px solid var(--secondary); }
-        .program-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(10, 92, 61, 0.3); }
-        .program-icon-wrapper i { font-size: 2.2rem; color: var(--secondary); }
-        .video-section { padding: 4rem 1.5rem; background-color: var(--light); text-align: center; }
-        .video-responsive { max-width: 900px; margin: 0 auto; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); border: 5px solid white; }
-        .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
         .program-fasilitas-section { background: var(--white); text-align: center; padding-top: 3rem; }
         .feature-list-wrapper { max-width: 900px; margin: 0 auto; padding: 2rem; background: var(--light); border-radius: 20px; }
         .simple-list-grid { display: flex; justify-content: center; gap: 3rem; text-align: left; flex-wrap: wrap; }
         .clean-list { list-style: none; padding: 0; margin: 0; min-width: 250px; }
         .clean-list li { margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px dashed rgba(0,0,0,0.1); display: flex; align-items: center; font-size: 1.1rem; gap: 1rem; color: #444; }
         .clean-list li i { color: var(--secondary); font-size: 1.2rem; }
-        .cta-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; text-align: center; padding: 5rem 1.5rem; }
-        .btn-whatsapp-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--whatsapp); color: white; padding: 1.2rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 1.2rem; transition: all 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .btn-whatsapp-cta:hover { background: var(--whatsapp-dark); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
-        .btn-whatsapp-cta i { font-size: 1.8rem; }
 
-        /* VIEW CONTAINERS */
-        #pendaftaran-view, #fasilitas-view, #profil-view { background: #f4f4f4; padding-bottom: 4rem; }
-        
-        /* SCHEDULE GRID */
+        /* ========================================
+           PENDAFTARAN & PRICING
+           ======================================== */
         .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
         .schedule-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; }
         .schedule-header { background: var(--secondary); color: var(--primary-dark); padding: 1.5rem; font-weight: 800; font-size: 1.2rem; text-align: center; }
         .schedule-body { padding: 1.5rem; }
         .schedule-item { margin-bottom: 1.5rem; border-bottom: 1px dashed #ddd; padding-bottom: 1rem; }
-        .schedule-item:last-child { border: none; margin: 0; padding: 0; }
         .wave-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 0.5rem; font-size: 1rem; }
 
-        /* ========================================
-           PRICING GRID (FIXED ALIGNMENT)
-           ======================================== */
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; align-items: stretch; }
-        .pricing-card { 
-            background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; 
-            display: flex; flex-direction: column; height: 100%; transition: transform 0.3s;
-        }
+        .pricing-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; height: 100%; transition: transform 0.3s; }
         .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--secondary); }
         
-        .pricing-header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 2rem 1.5rem; position: relative; overflow: hidden; text-align: center; }
+        .pricing-header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 2rem 1.5rem; text-align: center; }
         .pricing-header.boarding { background: linear-gradient(135deg, #064029, #04291a); }
-        .pricing-header h3 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; position: relative; z-index: 1; letter-spacing: 1px; }
-        .pricing-total { font-size: 2rem; font-weight: 800; color: var(--secondary); margin: 5px 0; position: relative; z-index: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .pricing-subtitle { font-size: 0.85rem; opacity: 0.9; position: relative; z-index: 1; }
+        .pricing-header h3 { font-size: 1.5rem; margin: 0; font-weight: 900; }
+        .pricing-total { font-size: 2rem; font-weight: 800; color: var(--secondary); margin: 5px 0; }
+        .pricing-subtitle { font-size: 0.85rem; opacity: 0.9; }
 
-        /* KUNCI: Flex 1 agar area putih mengisi ruang sisa, mendorong footer ke bawah */
         .pricing-table-container { padding: 0; flex: 1; display: flex; flex-direction: column; }
-        
         .pricing-row { display: flex; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
-        .pricing-row:last-child { border-bottom: none; }
-        .pricing-row.header { background: #f8f9fa; font-weight: 800; color: var(--text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #eee; }
-        
-        .col-no { width: 40px; padding: 12px 5px; text-align: center; border-right: 1px solid #f0f0f0; flex-shrink: 0; font-weight: bold; color: #999; }
+        .pricing-row.header { background: #f8f9fa; font-weight: 800; color: var(--text); font-size: 0.8rem; border-bottom: 2px solid #eee; }
+        .col-no { width: 40px; padding: 12px 5px; text-align: center; border-right: 1px solid #f0f0f0; font-weight: bold; color: #999; }
         .col-desc { flex: 1; padding: 12px 15px; border-right: 1px solid #f0f0f0; }
-        .col-price { width: 110px; padding: 12px 10px; text-align: right; font-weight: 700; color: var(--text); flex-shrink: 0; background: #fafafa; }
+        .col-price { width: 110px; padding: 12px 10px; text-align: right; font-weight: 700; color: var(--text); background: #fafafa; }
         
-        .item-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 4px; line-height: 1.3; font-size: 0.95rem; }
+        .item-title { font-weight: 800; color: var(--primary); display: block; margin-bottom: 4px; }
         .item-subtitle { font-size: 0.75rem; color: #888; font-style: italic; display: block; margin-bottom: 8px; }
         .item-details { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #555; }
-        .item-details li { position: relative; padding-left: 15px; margin-bottom: 3px; line-height: 1.4; }
-        .item-details li::before { content: '•'; color: var(--secondary); position: absolute; left: 0; font-weight: bold; font-size: 1.2em; top: -2px; }
+        .item-details li { position: relative; padding-left: 15px; margin-bottom: 3px; }
+        .item-details li::before { content: '•'; color: var(--secondary); position: absolute; left: 0; font-weight: bold; }
 
         .pricing-total-row { background: var(--primary-dark); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 1.1rem; margin-top: auto; border-top: 4px solid var(--secondary); }
 
-        /* KEREN: INFO & PROMO SECTION */
+        /* INFO & PROMO */
         .info-promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 3rem; margin-bottom: 2rem; }
-        
-        .info-card-style { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        /* Pembayaran Card */
-        .card-payment { border-left: 6px solid #00a39e; }
-        .card-payment .card-head { background: #e0f2f1; padding: 1.5rem; display: flex; align-items: center; gap: 15px; color: #00695c; }
-        .card-payment .card-head i { font-size: 1.8rem; }
-        .card-payment .card-body { padding: 1.5rem; }
-        .bsi-box { background: #f5fcfb; border: 1px dashed #00a39e; border-radius: 10px; padding: 1rem; text-align: center; margin: 1rem 0; }
-        .bsi-number { display: block; font-size: 1.8rem; font-weight: 900; color: #00a39e; letter-spacing: 1px; margin: 5px 0; }
-        
-        /* Promo Card */
-        .card-promo { border-left: 6px solid #d32f2f; }
-        .card-promo .card-head { background: #ffebee; padding: 1.5rem; display: flex; align-items: center; gap: 15px; color: #c62828; }
-        .card-promo .card-head i { font-size: 1.8rem; }
-        .card-promo .card-body { padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; height: 100%; text-align: center; }
-        .discount-badge { display: inline-block; background: #d32f2f; color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; font-size: 2.5rem; margin: 10px 0; transform: rotate(-2deg); box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3); }
-        
-        /* BROSUR GALLERY */
+        .info-card-style { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 100%; border: 1px solid #eee; }
+        .card-payment { border-top: 5px solid #00a39e; }
+        .card-payment .card-head { background: #e0f2f1; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 10px; color: #00695c; font-weight: 800; }
+        .card-payment .card-body { padding: 1.5rem; text-align: center; }
+        .bsi-box { background: #f0fdfc; border: 2px dashed #00a39e; border-radius: 15px; padding: 1.5rem; margin: 1rem 0; }
+        .bsi-number { font-size: 2rem; font-weight: 900; color: #00a39e; display: block; letter-spacing: 1px; }
+        .card-promo { border-top: 5px solid #d32f2f; }
+        .card-promo .card-head { background: #ffebee; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 10px; color: #c62828; font-weight: 800; }
+        .card-promo .card-body { padding: 1.5rem; text-align: center; }
+        .discount-badge { background: #d32f2f; color: white; padding: 5px 20px; border-radius: 50px; font-weight: 900; font-size: 2.2rem; display: inline-block; transform: rotate(-2deg); margin: 10px 0; box-shadow: 0 5px 15px rgba(211,47,47,0.3); }
+
+        /* GALLERY */
         .brochure-section { text-align: center; margin-bottom: 4rem; }
         .brochure-gallery-grid { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
         .brochure-card { position: relative; background: #fff; border-radius: 15px; width: 300px; height: 380px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; overflow: hidden; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; }
-        .brochure-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); border-color: var(--secondary); }
+        .brochure-card:hover { transform: translateY(-5px); }
         .brochure-image-container { height: 100%; width: 100%; position: relative; background: #f0f0f0; }
-        .brochure-thumb { width: 100%; height: 100%; object-fit: contain; object-position: top; transition: transform 0.5s; }
-        .brochure-card:hover .brochure-thumb { transform: scale(1.05); }
+        .brochure-thumb { width: 100%; height: 100%; object-fit: contain; object-position: top; }
         .brochure-overlay { position: absolute; inset: 0; background: rgba(10, 92, 61, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
         .brochure-card:hover .brochure-overlay { opacity: 1; }
-        .btn-view-pdf { background: white; color: var(--primary); padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+        .btn-view-pdf { background: white; color: var(--primary); padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem; }
         .brochure-footer { background: white; padding: 1rem; text-align: center; border-top: 1px solid #eee; z-index: 2; height: 60px; display: flex; align-items: center; justify-content: center; }
-        .brochure-title { font-size: 1rem; color: var(--text); font-weight: 700; margin: 0; }
-
-        /* MODAL */
-        .gallery-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 10005; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; padding: 20px; }
-        .gallery-content { position: relative; width: 100%; max-width: 1000px; max-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .gallery-close { position: fixed; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; width: 50px; height: 50px; border: none; color: white; font-size: 2rem; cursor: pointer; transition: all 0.3s; z-index: 10006; display: flex; align-items: center; justify-content: center; }
-        .gallery-close:hover { background: var(--secondary); color: var(--primary); }
-        .gallery-image { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
-        .gallery-caption { text-align: center; color: white; font-size: 1.2rem; margin-bottom: 1rem; padding: 0 2rem; }
-        .download-btn { margin-top: 15px; background: var(--secondary); color: var(--primary-dark); padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s; }
-        .download-btn:hover { background: #fff; color: var(--primary); transform: translateY(-2px); }
+        .brochure-title { font-size: 1rem; font-weight: 700; margin: 0; }
 
         /* FOOTER */
         footer { background: var(--primary-dark); color: white; padding: 3rem 0 1rem; font-size: 0.95rem; margin-bottom: 0; }
-        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 3rem; }
         .footer-logo { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
         .footer-logo-img { width: 50px; height: 50px; object-fit: contain; }
         .footer-logo-text { font-size: 1.4rem; font-weight: 700; color: var(--secondary); }
@@ -274,32 +259,36 @@
         .footer-socials a.wa-link:hover { color: var(--whatsapp); }
         .footer-map-container { width: 100%; max-width: 500px; height: 240px; border-radius: 15px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); }
         .footer-map-container iframe { width: 100%; height: 100%; border: 0; }
-        .footer-bottom { text-align: center; padding-top: 1.5rem; padding-bottom: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-bottom { text-align: center; padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; }
         .footer-bottom p a { color: var(--secondary); text-decoration: none; }
 
-        /* RESPONSIVE CSS */
+        /* MODAL */
+        .gallery-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10005; align-items: center; justify-content: center; }
+        .gallery-content { position: relative; width: 100%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
+        .gallery-close { position: fixed; top: 20px; right: 20px; background: rgba(255,255,255,0.2); color: white; border: none; font-size: 2rem; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; }
+        .gallery-image { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 10px; }
+        .download-btn { margin-top: 15px; background: var(--secondary); color: var(--primary-dark); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            body { padding-bottom: 0; } 
+            body { padding-bottom: 0; }
             .nav-links { display: none; }
             .bottom-nav { display: flex; }
             .hero { background-image: url('assets/images/hero-pesantren-mobile.png') !important; height: 60vh; background-attachment: scroll; }
-            footer { padding: 2rem 0 6rem 0; margin-bottom: 85px; } 
+            
+            .pricing-grid { gap: 2rem; padding: 0 15px; }
+            .info-promo-grid { padding: 0 15px; }
+            
+            /* Footer Fix: Padding bawah untuk kompensasi menu fixed */
+            footer { padding-bottom: 95px; margin-bottom: 0; }
             .footer-content { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; padding: 0 1.5rem; }
             .footer-left .footer-logo, .footer-contact-info p { justify-content: center; margin-bottom: 0.5rem; }
             .footer-contact-info p { gap: 10px; }
             .footer-socials { margin-top: 0.5rem; gap: 1rem; }
-            .footer-bottom { padding-top: 1rem; padding-bottom: 1rem; font-size: 0.75rem; border: none; }
-            .arabic-greeting { font-size: 1.3rem; margin-bottom: 0.2rem; }
-            .program-cards { grid-template-columns: 1fr; }
-            .simple-list-grid { gap: 1.5rem; } 
-            .facility-row { flex-direction: column !important; text-align: center; gap: 1rem; }
-            .fac-image-wrapper { height: 250px; width: 100%; }
-            .fac-text-content { padding: 1rem; }
-            .col-no { width: 30px; padding: 10px 2px; font-size: 0.8rem; }
-            .col-price { width: 90px; padding: 10px 5px; font-size: 0.85rem; }
-            .col-desc { padding: 10px 5px; }
-            .pricing-total-row { font-size: 1rem; }
-            .info-promo-grid { grid-template-columns: 1fr; }
+            .footer-bottom { padding-top: 1rem; padding-bottom: 0; border: none; }
+            
+            .col-no { width: 30px; font-size: 0.8rem; }
+            .col-price { width: 90px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -308,7 +297,7 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" onclick="switchPage('home')" class="logo-icon">
-                <img src="assets/images/logo_abs.png" alt="Logo Aminah Boarding School">
+                <img src="assets/images/logo_abs.png" alt="Logo">
                 <span class="logo-full">Aminah Boarding School</span>
             </a>
             <ul class="nav-links">
@@ -322,63 +311,30 @@
     </nav>
 
     <nav class="bottom-nav">
-        <a href="#" onclick="switchPage('home')" class="bottom-nav-item active" id="bot-home">
-            <i class="fas fa-home"></i>
-            <span>Beranda</span>
-        </a>
-        <a href="#" onclick="switchPage('profil')" class="bottom-nav-item" id="bot-profil">
-            <i class="fas fa-user-circle"></i>
-            <span>Profil</span>
-        </a>
+        <a href="#" onclick="switchPage('home')" class="bottom-nav-item active" id="bot-home"><i class="fas fa-home"></i><span>Beranda</span></a>
+        <a href="#" onclick="switchPage('profil')" class="bottom-nav-item" id="bot-profil"><i class="fas fa-user-circle"></i><span>Profil</span></a>
         <div class="nav-center-wrapper">
-            <a href="#" onclick="switchPage('pendaftaran')" class="nav-floating-btn" id="bot-pendaftaran">
-                <i class="fas fa-pen-fancy"></i>
-            </a>
+            <a href="#" onclick="switchPage('pendaftaran')" class="nav-floating-btn" id="bot-pendaftaran"><i class="fas fa-pen-fancy"></i></a>
             <span class="floating-label">Daftar</span>
         </div>
-        <a href="#" onclick="switchPage('fasilitas')" class="bottom-nav-item" id="bot-fasilitas">
-            <i class="fas fa-mosque"></i>
-            <span>Fasilitas</span>
-        </a>
-        <a href="https://wa.me/6281211121485?text=%D8%A8%D9%90%D8%B3%D9%92%D9%85%D9%90%20%D8%A7%D9%84%D9%84%D9%87%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%92%D9%85%D9%90%D9%86%D9%90%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%90%D9%8A%D9%92%D9%85%D9%90%0A%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%88%D8%B1%D8%AD%D9%85%D8%A9%20%D8%A7%D9%84%D9%84%D9%87%20%D9%88%D8%A8%D8%B1%D9%83%D8%A7%D8%AA%D9%87%0A%0ASaya%20ingin%20bertanya%20tentang%20Pesantren%20Aminah%20Boarding%20School.%0A%0A-%0Asumber:%20aminahboardingschool.com" target="_blank" class="bottom-nav-item">
-            <i class="fab fa-whatsapp"></i>
-            <span>WA</span>
-        </a>
+        <a href="#" onclick="switchPage('fasilitas')" class="bottom-nav-item" id="bot-fasilitas"><i class="fas fa-mosque"></i><span>Fasilitas</span></a>
+        <a href="https://wa.me/6281211121485?text=%D8%A8%D9%90%D8%B3%D9%92%D9%85%D9%90%20%D8%A7%D9%84%D9%84%D9%87%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%92%D9%85%D9%90%D9%86%D9%90%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%90%D9%8A%D9%92%D9%85%D9%90%0A%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%88%D8%B1%D8%AD%D9%85%D8%A9%20%D8%A7%D9%84%D9%84%D9%87%20%D9%88%D8%A8%D8%B1%D9%83%D8%A7%D8%AA%D9%87%0A%0ASaya%20ingin%20bertanya%20tentang%20Pesantren%20Aminah%20Boarding%20School.%0A%0A-%0Asumber:%20aminahboardingschool.com" target="_blank" class="bottom-nav-item"><i class="fab fa-whatsapp"></i><span>WA</span></a>
     </nav>
 
     <div id="home-view" class="page-section">
-        <section class="hero" id="home">
-            <div class="hero-bg"></div>
-        </section>
-
-        <section class="programs" id="program">
+        <section class="hero"><div class="hero-bg"></div></section>
+        <section class="programs">
             <div class="container">
                 <h2 class="section-title">Jenjang Pendidikan</h2>
                 <p class="section-subtitle">Program pendidikan yang komprehensif untuk membentuk generasi Qur'ani</p>
                 <div class="program-grid">
-                    <div class="program-card">
-                        <h3>ULA</h3>
-                        <span class="program-level">Setingkat SD</span>
-                        <p>Full Day</p>
-                        <p><b>Full Beasiswa</b> untuk Yatim & Dhuafa</p>
-                    </div>
-                    <div class="program-card">
-                        <h3>WUSTHA</h3>
-                        <span class="program-level">Setingkat SMP</span>
-                        <p>Full Day | Boarding</p>
-                        <p>Khusus <b>Ikhwan</b></p>
-                    </div>
-                    <div class="program-card">
-                        <h3>ULYA</h3>
-                        <span class="program-level">Setingkat SMA</span>
-                        <p>Full Day | Boarding</p>
-                        <p>Khusus <b>Ikhwan</b></p>
-                    </div>
-                </div>    
+                    <div class="program-card"><h3>ULA</h3><span class="program-level">Setingkat SD</span><p>Full Day</p></div>
+                    <div class="program-card"><h3>WUSTHA</h3><span class="program-level">Setingkat SMP</span><p>Full Day | Boarding</p></div>
+                    <div class="program-card"><h3>ULYA</h3><span class="program-level">Setingkat SMA</span><p>Full Day | Boarding</p></div>
+                </div>
             </div>
         </section>
-
-        <section class="keunggulan" id="keunggulan">
+        <section class="keunggulan">
             <div class="container">
                 <h2 class="section-title">Model Pembelajaran</h2>
                 <p class="section-subtitle">Mengapa memilih Aminah Boarding School?</p>
@@ -392,50 +348,29 @@
                 </div>
             </div>
         </section>
-
-        <section class="program-unggulan" id="program-unggulan">
+        <section class="program-unggulan">
             <div class="container">
                 <h2 class="section-title">Program Unggulan</h2>
                 <div class="program-cards">
-                    <div class="program-item">
-                        <div class="program-icon-wrapper"><i class="fas fa-book-quran"></i></div>
-                        <h3>Tahfidz Al-Qur'an</h3>
-                        <p>Metode mutqin dan talaqqi langsung kepada ustadz bersanad.</p>
-                    </div>
-                    <div class="program-item">
-                        <div class="program-icon-wrapper"><i class="fas fa-language"></i></div>
-                        <h3>Bahasa Arab</h3>
-                        <p>Penguasaan bahasa Arab aktif (lisan dan tulisan).</p>
-                    </div>
-                    <div class="program-item">
-                        <div class="program-icon-wrapper"><i class="fas fa-globe"></i></div>
-                        <h3>Bahasa Inggris</h3>
-                        <p>Pembelajaran bahasa Inggris modern tantangan global.</p>
-                    </div>
+                    <div class="program-item"><div class="program-icon-wrapper"><i class="fas fa-book-quran"></i></div><h3>Tahfidz Al-Qur'an</h3><p>Metode mutqin dan talaqqi langsung kepada ustadz bersanad.</p></div>
+                    <div class="program-item"><div class="program-icon-wrapper"><i class="fas fa-language"></i></div><h3>Bahasa Arab</h3><p>Penguasaan bahasa Arab aktif (lisan dan tulisan).</p></div>
+                    <div class="program-item"><div class="program-icon-wrapper"><i class="fas fa-globe"></i></div><h3>Bahasa Inggris</h3><p>Pembelajaran bahasa Inggris modern tantangan global.</p></div>
                 </div>
             </div>
         </section>
-
         <section id="video-profil" class="video-section">
             <div class="container">
                 <h2 class="section-title">Video Profil</h2>
-                <div class="video-responsive">
-                    <iframe src="https://www.youtube.com/embed/EH7F6O66uoA" allowfullscreen></iframe>
-                </div>
+                <div class="video-responsive"><iframe src="https://www.youtube.com/embed/EH7F6O66uoA" allowfullscreen></iframe></div>
             </div>
         </section>
-
         <section class="cta-section">
             <div class="container">
-                <h2>Bergabunglah Bersama Kami</h2>
-                <div class="cta-buttons-group" style="margin-top: 2rem;"> 
-                    <a href="https://wa.me/6281211121485?text=%D8%A8%D9%90%D8%B3%D9%92%D9%85%D9%90%20%D8%A7%D9%84%D9%84%D9%87%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%92%D9%85%D9%90%D9%86%D9%90%20%D8%A7%D9%84%D8%B1%D9%8D%D9%92%D8%AD%D9%90%D9%8A%D9%92%D9%85%D9%90%0A%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%88%D8%B1%D8%AD%D9%85%D8%A9%20%D8%A7%D9%84%D9%84%D9%87%20%D9%88%D8%A8%D8%B1%D9%83%D8%A7%D8%AA%D9%87%0A%0ASaya%20ingin%20bertanya%20tentang%20Pesantren%20Aminah%20Boarding%20School.%0A%0A-%0Asumber:%20aminahboardingschool.com" target="_blank" class="btn-whatsapp-cta">
-                        <i class="fab fa-whatsapp"></i> Chat WhatsApp Admin
-                    </a>
-                </div>
+                <h2>Bergabunglah Bersama Kami</h2><br>
+                <a href="https://wa.me/6281211121485" target="_blank" class="btn-whatsapp-cta"><i class="fab fa-whatsapp"></i> Chat WhatsApp Admin</a>
             </div>
         </section>
-    </div> 
+    </div>
 
     <div id="profil-view" class="page-section hidden">
         <div class="container">
@@ -454,7 +389,7 @@
                     <p class="signature">Hormat Kami,<br><br><strong>Ustadz La Ode Sandipati, S.Pd., M.Pd., S.Q.I, C.EQL., MTM.</strong><br>Pimpinan Pesantren</p>
                 </div>
             </section>
-            <section class="visi-misi" id="visi-misi">
+            <section class="visi-misi">
                 <div class="vm-content-simple">
                     <div class="vm-item">
                         <h3>Visi</h3>
@@ -483,58 +418,32 @@
         <div class="container">
             <h2 class="section-title">Fasilitas Pesantren</h2>
             <p class="section-subtitle">Lingkungan belajar yang nyaman dan kondusif untuk santri</p>
-
             <div class="facilities-collage">
                 <div class="collage-container">
                     <div class="facility-row" onclick="openModal(this)" data-image="assets/images/mesjid.jpg" data-caption="Masjid Islamic Center">
-                        <div class="fac-image-wrapper"><img src="assets/images/mesjid.jpg" alt="Masjid Islamic Center"></div>
-                        <div class="fac-text-content">
-                            <h3>Masjid Islamic Center</h3>
-                            <p>Pusat kegiatan ibadah dan pembelajaran santri. Masjid yang luas dan nyaman, dilengkapi pendingin ruangan (AC).</p>
-                        </div>
+                        <div class="fac-image-wrapper"><img src="assets/images/mesjid.jpg" alt="Masjid"></div>
+                        <div class="fac-text-content"><h3>Masjid Islamic Center</h3><p>Pusat kegiatan ibadah dan pembelajaran santri. Masjid yang luas dan nyaman, dilengkapi pendingin ruangan (AC).</p></div>
                     </div>
                     <div class="facility-row" onclick="openModal(this)" data-image="assets/images/gedung-sekolah.jpg" data-caption="Gedung Sekolah Modern">
-                        <div class="fac-image-wrapper"><img src="assets/images/gedung-sekolah.jpg" alt="Gedung Sekolah"></div>
-                        <div class="fac-text-content">
-                            <h3>Gedung Sekolah Modern</h3>
-                            <p>Ruang kelas yang representatif dan modern. Dilengkapi dengan fasilitas multimedia dan AC di setiap kelasnya.</p>
-                        </div>
+                        <div class="fac-image-wrapper"><img src="assets/images/gedung-sekolah.jpg" alt="Sekolah"></div>
+                        <div class="fac-text-content"><h3>Gedung Sekolah Modern</h3><p>Ruang kelas yang representatif dan modern. Dilengkapi dengan fasilitas multimedia dan AC di setiap kelasnya.</p></div>
                     </div>
                     <div class="facility-row" onclick="openModal(this)" data-image="assets/images/gedung-asrama.jpg" data-caption="Asrama Putra">
-                        <div class="fac-image-wrapper"><img src="assets/images/gedung-asrama.jpg" alt="Asrama Putra"></div>
-                        <div class="fac-text-content">
-                            <h3>Asrama Nyaman</h3>
-                            <p>Asrama putra yang bersih dan tertata rapi. Setiap kamar dilengkapi dengan ranjang bertingkat, lemari pribadi, dan AC.</p>
-                        </div>
+                        <div class="fac-image-wrapper"><img src="assets/images/gedung-asrama.jpg" alt="Asrama"></div>
+                        <div class="fac-text-content"><h3>Asrama Nyaman</h3><p>Asrama putra yang bersih dan tertata rapi. Setiap kamar dilengkapi dengan ranjang bertingkat, lemari pribadi, dan AC.</p></div>
                     </div>
                     <div class="facility-row" onclick="openModal(this)" data-image="assets/images/perpustakaan.jpg" data-caption="Perpustakaan Lengkap">
                         <div class="fac-image-wrapper"><img src="assets/images/perpustakaan.jpg" alt="Perpustakaan"></div>
-                        <div class="fac-text-content">
-                            <h3>Perpustakaan Lengkap</h3>
-                            <p>Pusat literasi dengan koleksi buku yang beragam, tempat yang tenang untuk membaca dan memperluas wawasan.</p>
-                        </div>
+                        <div class="fac-text-content"><h3>Perpustakaan Lengkap</h3><p>Pusat literasi dengan koleksi buku yang beragam, tempat yang tenang untuk membaca dan memperluas wawasan.</p></div>
                     </div>
                 </div>
             </div>
-
-            <section class="program-fasilitas-section" style="padding-top: 3rem; background: transparent;">
-                <h2 class="section-title" style="font-size: 2rem;">Fasilitas Pendukung</h2>
-                <div class="feature-list-wrapper" style="margin-top: 2rem;">
+            <section class="program-fasilitas-section">
+                <h2 class="section-title">Fasilitas Pendukung</h2>
+                <div class="feature-list-wrapper">
                     <div class="simple-list-grid">
-                        <ul class="clean-list">
-                            <li><i class="fas fa-check-circle"></i> Asrama</li>
-                            <li><i class="fas fa-check-circle"></i> Ruang Makan</li>
-                            <li><i class="fas fa-check-circle"></i> Masjid</li>
-                            <li><i class="fas fa-check-circle"></i> Lapangan</li>
-                            <li><i class="fas fa-check-circle"></i> Ruang Olahraga</li>
-                        </ul>
-                        <ul class="clean-list">
-                            <li><i class="fas fa-check-circle"></i> Kelas Ber-AC</li>
-                            <li><i class="fas fa-check-circle"></i> Kamar Ber-AC</li>
-                            <li><i class="fas fa-check-circle"></i> Kantin</li>
-                            <li><i class="fas fa-check-circle"></i> Depo Air</li>
-                            <li><i class="fas fa-check-circle"></i> CCTV</li>
-                        </ul>
+                        <ul class="clean-list"><li><i class="fas fa-check-circle"></i> Asrama</li><li><i class="fas fa-check-circle"></i> Ruang Makan</li><li><i class="fas fa-check-circle"></i> Masjid</li><li><i class="fas fa-check-circle"></i> Lapangan</li><li><i class="fas fa-check-circle"></i> Ruang Olahraga</li></ul>
+                        <ul class="clean-list"><li><i class="fas fa-check-circle"></i> Kelas Ber-AC</li><li><i class="fas fa-check-circle"></i> Kamar Ber-AC</li><li><i class="fas fa-check-circle"></i> Kantin</li><li><i class="fas fa-check-circle"></i> Depo Air</li><li><i class="fas fa-check-circle"></i> CCTV</li></ul>
                     </div>
                 </div>
             </section>
@@ -550,27 +459,15 @@
                 <div class="schedule-card">
                     <div class="schedule-header"><i class="fas fa-calendar-alt"></i> Waktu Pendaftaran</div>
                     <div class="schedule-body">
-                        <div class="schedule-item">
-                            <span class="wave-title">Gelombang 1</span>
-                            <span class="wave-date"><i class="far fa-clock"></i> 1 November 2025 - 27 Februari 2026</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="wave-title">Gelombang 2</span>
-                            <span class="wave-date"><i class="far fa-clock"></i> 2 Maret - 15 Mei 2026</span>
-                        </div>
+                        <div class="schedule-item"><span class="wave-title">Gelombang 1</span><span class="wave-date"><i class="far fa-clock"></i> 1 November 2025 - 27 Februari 2026</span></div>
+                        <div class="schedule-item"><span class="wave-title">Gelombang 2</span><span class="wave-date"><i class="far fa-clock"></i> 2 Maret - 15 Mei 2026</span></div>
                     </div>
                 </div>
                 <div class="schedule-card">
                     <div class="schedule-header" style="background-color: var(--primary); color: white;"><i class="fas fa-file-signature"></i> Tes Seleksi</div>
                     <div class="schedule-body">
-                        <div class="schedule-item">
-                            <span class="wave-title">Gelombang 1</span>
-                            <span class="wave-date"><i class="far fa-clock"></i> 28 Februari - 1 Maret 2026</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="wave-title">Gelombang 2</span>
-                            <span class="wave-date"><i class="far fa-clock"></i> 16 - 17 Mei 2026</span>
-                        </div>
+                        <div class="schedule-item"><span class="wave-title">Gelombang 1</span><span class="wave-date"><i class="far fa-clock"></i> 28 Februari - 1 Maret 2026</span></div>
+                        <div class="schedule-item"><span class="wave-title">Gelombang 2</span><span class="wave-date"><i class="far fa-clock"></i> 16 - 17 Mei 2026</span></div>
                     </div>
                 </div>
             </div>
@@ -578,285 +475,77 @@
             <h2 class="section-title">Rincian Biaya Pendidikan</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>ULA (FULLDAY)</h3>
-                        <div class="pricing-total">Rp 12.000.000</div>
-                        <p class="pricing-subtitle">Total Biaya Awal Masuk</p>
-                    </div>
+                    <div class="pricing-header"><h3>ULA (FULLDAY)</h3><div class="pricing-total">Rp 12.000.000</div><p class="pricing-subtitle">Total Biaya Awal Masuk</p></div>
                     <div class="pricing-table-container">
-                        <div class="pricing-row header">
-                            <div class="col-no">NO</div>
-                            <div class="col-desc">JENIS BIAYA</div>
-                            <div class="col-price">NOMINAL</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">1</div>
-                            <div class="col-desc">
-                                <span class="item-title">POS (Uang Pangkal)</span>
-                                <span class="item-subtitle">Pengembangan Operasional Sekolah (Sekali Bayar)</span>
-                                <ul class="item-details">
-                                    <li>Maintenance Infrastruktur</li>
-                                    <li>Sarana dan Prasarana</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 7.000.000</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">2</div>
-                            <div class="col-desc">
-                                <span class="item-title">KEGIATAN SANTRI (KS)</span>
-                                <span class="item-subtitle">Kegiatan Satu Tahun (Dibayar per Tahun)</span>
-                                <ul class="item-details">
-                                    <li>Program Akademik & Ujian</li>
-                                    <li>Kegiatan Pembinaan Karakter</li>
-                                    <li>Pengembangan SDM</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 4.000.000</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">3</div>
-                            <div class="col-desc">
-                                <span class="item-title">SPP BULANAN</span>
-                                <span class="item-subtitle">(dibayar per bulan)</span>
-                                <ul class="item-details">
-                                    <li>Gaji Guru dan Staff</li>
-                                    <li>Operasional Bulanan (listrik, internet, dll.)</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 1.000.000</div>
-                        </div>
+                        <div class="pricing-row header"><div class="col-no">NO</div><div class="col-desc">JENIS BIAYA</div><div class="col-price">NOMINAL</div></div>
+                        <div class="pricing-row"><div class="col-no">1</div><div class="col-desc"><span class="item-title">POS (Uang Pangkal)</span><ul class="item-details"><li>Maintenance Infrastruktur</li><li>Sarana dan Prasarana</li></ul></div><div class="col-price">Rp 7.000.000</div></div>
+                        <div class="pricing-row"><div class="col-no">2</div><div class="col-desc"><span class="item-title">KEGIATAN SANTRI (KS)</span><ul class="item-details"><li>Program Akademik & Ujian</li><li>Kegiatan Pembinaan Karakter</li><li>Pengembangan SDM</li></ul></div><div class="col-price">Rp 4.000.000</div></div>
+                        <div class="pricing-row"><div class="col-no">3</div><div class="col-desc"><span class="item-title">SPP BULANAN</span><ul class="item-details"><li>Gaji Guru dan Staff</li><li>Operasional Bulanan</li></ul></div><div class="col-price">Rp 1.000.000</div></div>
                     </div>
-                    <div class="pricing-total-row">
-                        <span>TOTAL BIAYA</span>
-                        <span>Rp 12.000.000</span>
-                    </div>
+                    <div class="pricing-total-row"><span>TOTAL BIAYA</span><span>Rp 12.000.000</span></div>
                 </div>
-
                 <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>WUSTHA & ULYA (FD)</h3>
-                        <div class="pricing-total">Rp 12.800.000</div>
-                        <p class="pricing-subtitle">Total Biaya Awal Masuk</p>
-                    </div>
+                    <div class="pricing-header"><h3>WUSTHA & ULYA (FD)</h3><div class="pricing-total">Rp 12.800.000</div><p class="pricing-subtitle">Total Biaya Awal Masuk</p></div>
                     <div class="pricing-table-container">
-                        <div class="pricing-row header">
-                            <div class="col-no">NO</div>
-                            <div class="col-desc">JENIS BIAYA</div>
-                            <div class="col-price">NOMINAL</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">1</div>
-                            <div class="col-desc">
-                                <span class="item-title">POS (Uang Pangkal)</span>
-                                <span class="item-subtitle">Pengembangan Operasional Sekolah (Sekali Bayar)</span>
-                                <ul class="item-details">
-                                    <li>Maintenance Infrastruktur</li>
-                                    <li>Sarana dan Prasarana</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 7.000.000</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">2</div>
-                            <div class="col-desc">
-                                <span class="item-title">KEGIATAN SANTRI (KS)</span>
-                                <span class="item-subtitle">Kegiatan Satu Tahun (Dibayar per Tahun)</span>
-                                <ul class="item-details">
-                                    <li>Program Akademik & Ujian</li>
-                                    <li>Kegiatan Pembinaan Karakter</li>
-                                    <li>Pengembangan SDM</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 4.000.000</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">3</div>
-                            <div class="col-desc">
-                                <span class="item-title">SPP BULANAN</span>
-                                <span class="item-subtitle">(dibayar per bulan)</span>
-                                <ul class="item-details">
-                                    <li>Gaji Guru dan Staff</li>
-                                    <li>Catering (Makan Siang)</li>
-                                    <li>Operasional Bulanan</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 1.800.000</div>
-                        </div>
+                        <div class="pricing-row header"><div class="col-no">NO</div><div class="col-desc">JENIS BIAYA</div><div class="col-price">NOMINAL</div></div>
+                        <div class="pricing-row"><div class="col-no">1</div><div class="col-desc"><span class="item-title">POS (Uang Pangkal)</span><ul class="item-details"><li>Maintenance Infrastruktur</li><li>Sarana dan Prasarana</li></ul></div><div class="col-price">Rp 7.000.000</div></div>
+                        <div class="pricing-row"><div class="col-no">2</div><div class="col-desc"><span class="item-title">KEGIATAN SANTRI (KS)</span><ul class="item-details"><li>Program Akademik & Ujian</li><li>Kegiatan Pembinaan Karakter</li><li>Pengembangan SDM</li></ul></div><div class="col-price">Rp 4.000.000</div></div>
+                        <div class="pricing-row"><div class="col-no">3</div><div class="col-desc"><span class="item-title">SPP BULANAN</span><ul class="item-details"><li>Gaji Guru dan Staff</li><li>Catering (Makan Siang)</li><li>Operasional Bulanan</li></ul></div><div class="col-price">Rp 1.800.000</div></div>
                     </div>
-                    <div class="pricing-total-row">
-                        <span>TOTAL BIAYA</span>
-                        <span>Rp 12.800.000</span>
-                    </div>
+                    <div class="pricing-total-row"><span>TOTAL BIAYA</span><span>Rp 12.800.000</span></div>
                 </div>
-
                 <div class="pricing-card">
-                    <div class="pricing-header boarding">
-                        <h3>BOARDING</h3>
-                        <div class="pricing-total">Rp 17.000.000</div>
-                        <p class="pricing-subtitle">Total Biaya Awal Masuk</p>
-                    </div>
+                    <div class="pricing-header boarding"><h3>BOARDING</h3><div class="pricing-total">Rp 17.000.000</div><p class="pricing-subtitle">Total Biaya Awal Masuk</p></div>
                     <div class="pricing-table-container">
-                        <div class="pricing-row header">
-                            <div class="col-no">NO</div>
-                            <div class="col-desc">JENIS BIAYA</div>
-                            <div class="col-price">NOMINAL</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">1</div>
-                            <div class="col-desc">
-                                <span class="item-title">POS (Uang Pangkal)</span>
-                                <span class="item-subtitle">Pengembangan Operasional Sekolah (Sekali Bayar)</span>
-                                <ul class="item-details">
-                                    <li>Maintenance Infrastruktur</li>
-                                    <li>Sarana dan Prasarana</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 10.000.000</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">2</div>
-                            <div class="col-desc">
-                                <span class="item-title">KEGIATAN SANTRI (KS)</span>
-                                <span class="item-subtitle">Kegiatan Satu Tahun (Dibayar per Tahun)</span>
-                                <ul class="item-details">
-                                    <li>Program Akademik & Ujian</li>
-                                    <li>Kegiatan Pembinaan Karakter</li>
-                                    <li>Pengembangan SDM</li>
-                                    <li>Operasional Kesantrian</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 4.500.000</div>
-                        </div>
-                        <div class="pricing-row">
-                            <div class="col-no">3</div>
-                            <div class="col-desc">
-                                <span class="item-title">SPP BULANAN</span>
-                                <span class="item-subtitle">(dibayar per bulan)</span>
-                                <ul class="item-details">
-                                    <li>Gaji Guru dan Staff</li>
-                                    <li>Catering (3x Sehari)</li>
-                                    <li>Operasional Bulanan</li>
-                                </ul>
-                            </div>
-                            <div class="col-price">Rp 2.500.000</div>
-                        </div>
+                        <div class="pricing-row header"><div class="col-no">NO</div><div class="col-desc">JENIS BIAYA</div><div class="col-price">NOMINAL</div></div>
+                        <div class="pricing-row"><div class="col-no">1</div><div class="col-desc"><span class="item-title">POS (Uang Pangkal)</span><ul class="item-details"><li>Maintenance Infrastruktur</li><li>Sarana dan Prasarana</li></ul></div><div class="col-price">Rp 10.000.000</div></div>
+                        <div class="pricing-row"><div class="col-no">2</div><div class="col-desc"><span class="item-title">KEGIATAN SANTRI (KS)</span><ul class="item-details"><li>Program Akademik & Ujian</li><li>Kegiatan Pembinaan Karakter</li><li>Pengembangan SDM</li><li>Operasional Kesantrian</li></ul></div><div class="col-price">Rp 4.500.000</div></div>
+                        <div class="pricing-row"><div class="col-no">3</div><div class="col-desc"><span class="item-title">SPP BULANAN</span><ul class="item-details"><li>Gaji Guru dan Staff</li><li>Catering (3x Sehari)</li><li>Operasional Bulanan</li></ul></div><div class="col-price">Rp 2.500.000</div></div>
                     </div>
-                    <div class="pricing-total-row">
-                        <span>TOTAL BIAYA</span>
-                        <span>Rp 17.000.000</span>
-                    </div>
+                    <div class="pricing-total-row"><span>TOTAL BIAYA</span><span>Rp 17.000.000</span></div>
                 </div>
             </div>
 
             <div class="info-promo-grid">
                 <div class="info-card-style card-payment">
-                    <div class="card-head">
-                        <i class="fas fa-credit-card"></i>
-                        <h3>INFORMASI PEMBAYARAN</h3>
-                    </div>
+                    <div class="card-head"><i class="fas fa-credit-card"></i><h3>INFORMASI PEMBAYARAN</h3></div>
                     <div class="card-body">
-                        <p style="text-align: center; color: #555;">Pembayaran dapat ditransfer melalui:</p>
-                        <div class="bsi-box">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bank_Syariah_Indonesia.svg" alt="BSI" style="height: 30px; display: block; margin: 0 auto 5px;">
-                            <span class="bsi-number">4435801560</span>
-                            <span style="display: block; font-weight: 600; color: #333;">a.n YAYASAN AMINAH SALIM</span>
-                        </div>
-                        <p style="text-align: center; font-size: 0.9rem; margin-top: 1rem; color: #777;">
-                            Mohon kirimkan bukti transfer ke WhatsApp Admin:
-                        </p>
-                        <div style="text-align: center; margin-top: 5px;">
-                            <a href="https://wa.me/6281211121485" target="_blank" style="color: var(--whatsapp); font-weight: 800; text-decoration: none; font-size: 1.1rem;">
-                                <i class="fab fa-whatsapp"></i> 0812-111-21-485
-                            </a>
-                        </div>
+                        <p style="color:#555;">Pembayaran dapat ditransfer melalui:</p>
+                        <div class="bsi-box"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bank_Syariah_Indonesia.svg" alt="BSI" style="height:30px; display:block; margin:0 auto 5px;"><span class="bsi-number">4435801560</span><span style="display:block; font-weight:600; color:#333;">a.n YAYASAN AMINAH SALIM</span></div>
+                        <p style="font-size:0.9rem; color:#777;">Mohon kirimkan bukti transfer ke WhatsApp Admin:</p>
+                        <a href="https://wa.me/6281211121485" target="_blank" style="color:var(--whatsapp); font-weight:800; font-size:1.1rem; text-decoration:none;"><i class="fab fa-whatsapp"></i> 0812-111-21-485</a>
                     </div>
                 </div>
-
                 <div class="info-card-style card-promo">
-                    <div class="card-head">
-                        <i class="fas fa-tags"></i>
-                        <h3>PROMO SPESIAL</h3>
-                    </div>
+                    <div class="card-head"><i class="fas fa-tags"></i><h3>PROMO SPESIAL</h3></div>
                     <div class="card-body">
-                        <p style="font-size: 1.1rem; color: #555;">Dapatkan Potongan Harga Khusus!</p>
+                        <p style="font-size:1.1rem; color:#555;">Dapatkan Potongan Harga Khusus!</p>
                         <span class="discount-badge">DISKON 50%</span>
-                        <h4 style="font-size: 1.4rem; color: #333; margin: 10px 0;">Biaya Pendaftaran</h4>
-                        <p style="color: #d32f2f; font-weight: 600; background: #ffebee; display: inline-block; padding: 5px 15px; border-radius: 50px; border: 1px solid #ffcdd2;">
-                            <i class="fas fa-hourglass-half"></i> Hanya untuk 20 Pendaftar Pertama
-                        </p>
-                        <div style="margin-top: 2rem;">
-                            <a href="https://aminahboardingschool.com/pendaftaran/" target="_blank" class="btn-daftar" style="background: #d32f2f; color: white; text-decoration: none; padding: 10px 25px; border-radius: 50px; font-weight: bold; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);">
-                                Ambil Promo Sekarang <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
+                        <h4 style="font-size:1.4rem; color:#333; margin:10px 0;">Biaya Pendaftaran</h4>
+                        <p style="color:#d32f2f; font-weight:600; background:#ffebee; display:inline-block; padding:5px 15px; border-radius:50px; border:1px solid #ffcdd2;">Hanya untuk 20 Pendaftar Pertama</p>
+                        <div style="margin-top:2rem;"><a href="https://aminahboardingschool.com/pendaftaran/" target="_blank" class="btn-daftar" style="background:#d32f2f; color:white; text-decoration:none; padding:10px 25px; border-radius:50px; font-weight:bold; box-shadow:0 5px 15px rgba(211,47,47,0.3);">Ambil Promo Sekarang <i class="fas fa-arrow-right"></i></a></div>
                     </div>
                 </div>
             </div>
 
             <section class="brochure-section">
-                <h3 class="section-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Galeri Brosur Informasi</h3>
+                <h3 class="section-title">Galeri Brosur Informasi</h3>
                 <div class="brochure-gallery-grid">
-                    <div class="brochure-card" onclick="openPdfModal('assets/images/biaya-ula.jpg', 'Rincian Biaya Ula')">
-                        <div class="brochure-image-container">
-                            <img src="assets/images/biaya-ula.jpg" alt="Rincian Biaya Ula" class="brochure-thumb">
-                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
-                        </div>
-                        <div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya Ula</h4></div>
-                    </div>
-
-                    <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-front.jpg', 'Brosur Halaman Depan')">
-                        <div class="brochure-image-container">
-                            <img src="assets/images/brosur-front.jpg" alt="Brosur Depan" class="brochure-thumb">
-                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
-                        </div>
-                        <div class="brochure-footer"><h4 class="brochure-title">Brosur Halaman Depan</h4></div>
-                    </div>
-                    <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-back.jpg', 'Brosur Halaman Belakang')">
-                        <div class="brochure-image-container">
-                            <img src="assets/images/brosur-back.jpg" alt="Brosur Belakang" class="brochure-thumb">
-                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
-                        </div>
-                        <div class="brochure-footer"><h4 class="brochure-title">Brosur Halaman Belakang</h4></div>
-                    </div>
-                    <div class="brochure-card" onclick="openPdfModal('assets/images/biaya-fullday.jpg', 'Rincian Biaya Fullday')">
-                        <div class="brochure-image-container">
-                            <img src="assets/images/biaya-fullday.jpg" alt="Biaya Fullday" class="brochure-thumb">
-                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
-                        </div>
-                        <div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya Fullday</h4></div>
-                    </div>
-                    <div class="brochure-card" onclick="openPdfModal('assets/images/biaya-boarding.jpg', 'Rincian Biaya Boarding')">
-                        <div class="brochure-image-container">
-                            <img src="assets/images/biaya-boarding.jpg" alt="Biaya Boarding" class="brochure-thumb">
-                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
-                        </div>
-                        <div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya Boarding</h4></div>
-                    </div>
-                    <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-onepage-back.jpg', 'Informasi Tambahan')">
-                        <div class="brochure-image-container">
-                            <img src="assets/images/brosur-onepage-back.jpg" alt="Info Tambahan" class="brochure-thumb">
-                            <div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Lihat Preview</span></div>
-                        </div>
-                        <div class="brochure-footer"><h4 class="brochure-title">Informasi Tambahan</h4></div>
-                    </div>
+                    <div class="brochure-card" onclick="openPdfModal('assets/images/biaya-ula.jpg', 'Rincian Biaya Ula')"><div class="brochure-image-container"><img src="assets/images/biaya-ula.jpg" alt="Rincian Biaya Ula" class="brochure-thumb"><div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Preview</span></div></div><div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya Ula</h4></div></div>
+                    <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-front.jpg', 'Brosur Halaman Depan')"><div class="brochure-image-container"><img src="assets/images/brosur-front.jpg" alt="Brosur Depan" class="brochure-thumb"><div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Preview</span></div></div><div class="brochure-footer"><h4 class="brochure-title">Brosur Halaman Depan</h4></div></div>
+                    <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-back.jpg', 'Brosur Halaman Belakang')"><div class="brochure-image-container"><img src="assets/images/brosur-back.jpg" alt="Brosur Belakang" class="brochure-thumb"><div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Preview</span></div></div><div class="brochure-footer"><h4 class="brochure-title">Brosur Halaman Belakang</h4></div></div>
+                    <div class="brochure-card" onclick="openPdfModal('assets/images/biaya-fullday.jpg', 'Rincian Biaya Fullday')"><div class="brochure-image-container"><img src="assets/images/biaya-fullday.jpg" alt="Biaya Fullday" class="brochure-thumb"><div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Preview</span></div></div><div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya Fullday</h4></div></div>
+                    <div class="brochure-card" onclick="openPdfModal('assets/images/biaya-boarding.jpg', 'Rincian Biaya Boarding')"><div class="brochure-image-container"><img src="assets/images/biaya-boarding.jpg" alt="Biaya Boarding" class="brochure-thumb"><div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Preview</span></div></div><div class="brochure-footer"><h4 class="brochure-title">Rincian Biaya Boarding</h4></div></div>
+                    <div class="brochure-card" onclick="openPdfModal('assets/images/brosur-onepage-back.jpg', 'Informasi Tambahan')"><div class="brochure-image-container"><img src="assets/images/brosur-onepage-back.jpg" alt="Info Tambahan" class="brochure-thumb"><div class="brochure-overlay"><span class="btn-view-pdf"><i class="fas fa-eye"></i> Preview</span></div></div><div class="brochure-footer"><h4 class="brochure-title">Informasi Tambahan</h4></div></div>
                 </div>
             </section>
-            
-             <div style="text-align: center; margin-top: 3rem; margin-bottom: 3rem;">
-                 <a href="https://aminahboardingschool.com/pendaftaran/" target="_blank" class="btn-daftar" style="background: var(--primary); color: white; padding: 1rem 3rem; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem;">Isi Formulir Pendaftaran Sekarang</a>
-            </div>
         </div>
     </div>
 
     <footer id="kontak">
         <div class="footer-content">
             <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="assets/images/logo_abs.png" alt="Logo" class="footer-logo-img">
-                    <div class="footer-logo-text">Aminah Boarding School</div>
-                </div>
-                <span class="footer-tagline">"Menuju Cahaya Al’Quran dan Assunah,<br>Sesuai pemahaman Generasi Termulia"</span>
+                <div class="footer-logo"><img src="assets/images/logo_abs.png" alt="Logo" class="footer-logo-img"><div class="footer-logo-text">Aminah Boarding School</div></div>
                 <div class="footer-contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> <span>Jalan Usaha No. 21C, Cawang, Jakarta Timur</span></p>
                     <p><i class="fas fa-phone"></i> 021 2280 6136</p>
@@ -873,9 +562,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <div class="footer-map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.273167158784!2d106.8665!3d-6.2309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNTEuMiJTIDEwNsKwNTEnNTkuNCJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
-                </div>
+                <div class="footer-map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.273167158784!2d106.8665!3d-6.2309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnNTEuMiJTIDEwNsKwNTEnNTkuNCJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe></div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -886,135 +573,53 @@
     <div id="singleModal" class="gallery-modal" onclick="if(event.target.id==='singleModal') closeSingleModal()">
         <button class="gallery-close" onclick="closeSingleModal()">×</button>
         <div class="gallery-content">
-            <div class="gallery-image-container" style="width: 100%; display: flex; justify-content: center;">
-                <img id="modalImage" class="gallery-image" src="" alt="Preview" style="display:none;">
-            </div>
+            <img id="modalImage" class="gallery-image" src="" alt="Preview">
             <div id="modalCaption" class="gallery-caption"></div>
-            <a id="downloadBtn" href="#" target="_blank" class="download-btn" style="display:none;">
-                <i class="fas fa-download"></i> Download File
-            </a>
+            <a id="downloadBtn" href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
         </div>
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // 1. HEADER AUTO-HIDE
-        let lastScrollY = window.scrollY;
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                navbar.classList.add('nav-up');
-            } else {
-                navbar.classList.remove('nav-up');
-            }
-            if (currentScrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            lastScrollY = currentScrollY;
+        document.addEventListener('DOMContentLoaded', function() {
+            let lastScrollY = window.scrollY;
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+                lastScrollY = currentScrollY;
+            });
+
+            window.switchPage = function(pageName) {
+                document.querySelectorAll('.page-section').forEach(el => el.classList.add('hidden'));
+                document.getElementById(pageName + '-view').classList.remove('hidden');
+                document.querySelectorAll('.nav-links a, .bottom-nav-item').forEach(el => el.classList.remove('active'));
+                
+                if(pageName === 'home') document.querySelectorAll('#link-home, #bot-home').forEach(el => el.classList.add('active'));
+                if(pageName === 'profil') document.querySelectorAll('#link-profil, #bot-profil').forEach(el => el.classList.add('active'));
+                if(pageName === 'pendaftaran') {
+                    document.getElementById('link-daftar').classList.add('active');
+                    document.querySelector('.nav-floating-btn').classList.add('active');
+                }
+                if(pageName === 'fasilitas') document.querySelectorAll('#link-fasilitas, #bot-fasilitas').forEach(el => el.classList.add('active'));
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
         });
 
-        // 2. SPA SWITCH
-        window.switchPage = function(pageName, scrollTargetId = null) {
-            const homeView = document.getElementById('home-view');
-            const profilView = document.getElementById('profil-view');
-            const pendaftaranView = document.getElementById('pendaftaran-view');
-            const fasilitasView = document.getElementById('fasilitas-view');
-            
-            document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
-            document.querySelector('.nav-floating-btn').classList.remove('active');
-
-            homeView.classList.add('hidden');
-            profilView.classList.add('hidden');
-            pendaftaranView.classList.add('hidden');
-            fasilitasView.classList.add('hidden');
-
-            let activeLinkIds = [];
-
-            if (pageName === 'home') {
-                homeView.classList.remove('hidden');
-                activeLinkIds = ['link-home', 'bot-home'];
-            } else if (pageName === 'profil') { 
-                profilView.classList.remove('hidden');
-                activeLinkIds = ['link-profil', 'bot-profil'];
-            } else if (pageName === 'pendaftaran') {
-                pendaftaranView.classList.remove('hidden');
-                activeLinkIds = ['link-daftar'];
-                document.querySelector('.nav-floating-btn').classList.add('active');
-            } else if (pageName === 'fasilitas') {
-                fasilitasView.classList.remove('hidden');
-                activeLinkIds = ['link-fasilitas', 'bot-fasilitas'];
-            }
-
-            activeLinkIds.forEach(id => {
-                const el = document.getElementById(id);
-                if(el) el.classList.add('active');
-            });
-
-            if (scrollTargetId) {
-                const target = document.getElementById(scrollTargetId);
-                if(target) target.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        };
-
-        // 3. MODAL (IMAGE)
-        const modal = document.getElementById('singleModal');
-        const modalImg = document.getElementById('modalImage');
-        const modalCaption = document.getElementById('modalCaption');
-        const downloadBtn = document.getElementById('downloadBtn');
-
-        if (modal) {
-            document.querySelectorAll('.facility-row').forEach(row => {
-                row.addEventListener('click', function() {
-                    const imgSrc = this.getAttribute('data-image');
-                    const captionText = this.getAttribute('data-caption');
-                    
-                    if(imgSrc) {
-                        modalImg.style.display = 'block';
-                        downloadBtn.style.display = 'none'; // Fasilitas tdk butuh download
-                        modalImg.src = imgSrc;
-                        if(modalCaption) modalCaption.textContent = captionText || '';
-                        modal.style.display = 'flex';
-                        document.body.style.overflow = 'hidden'; 
-                    }
-                });
-            });
+        function openPdfModal(fileUrl, title) {
+            const modal = document.getElementById('singleModal');
+            const img = document.getElementById('modalImage');
+            const btn = document.getElementById('downloadBtn');
+            img.src = fileUrl;
+            document.getElementById('modalCaption').textContent = title;
+            btn.href = fileUrl;
+            btn.setAttribute('download', title);
+            modal.style.display = 'flex';
         }
-    });
-
-    function openPdfModal(fileUrl, title) {
-        const modal = document.getElementById('singleModal');
-        const modalImg = document.getElementById('modalImage');
-        const modalCaption = document.getElementById('modalCaption');
-        const downloadBtn = document.getElementById('downloadBtn');
-
-        modalImg.style.display = 'block';
-        downloadBtn.style.display = 'inline-flex';
-
-        modalImg.src = fileUrl;
-        modalCaption.textContent = title;
-        
-        // Tombol download mengarah ke file gambar
-        downloadBtn.href = fileUrl;
-        downloadBtn.setAttribute('download', title);
-
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeSingleModal() {
-        const modal = document.getElementById('singleModal');
-        if(modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; 
+        function closeSingleModal() {
+            document.getElementById('singleModal').style.display = 'none';
         }
-    }
     </script>
 </body>
 </html>
