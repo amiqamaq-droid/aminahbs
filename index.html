@@ -157,7 +157,7 @@
            PROFIL & FASILITAS
            ======================================== */
         .sambutan-section { padding: 3rem 1.5rem; background-color: var(--white); text-align: center; margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
-        .arabic-greeting { font-family: 'Times New Roman', serif; font-size: 2rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1.4; }
+        .arabic-greeting { font-family: 'Times New Roman', serif; font-size: 1.2rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 0.5rem; line-height: 1.4; }
         .sambutan-content { max-width: 900px; margin: 1.5rem auto; font-size: 1.1rem; line-height: 1.8; color: #444; }
         .sambutan-content .hadith { font-style: italic; color: var(--primary); font-weight: 600; padding: 1rem; background: #f0f9f4; border-radius: 10px; margin-bottom: 2rem; display: inline-block; }
         .signature { margin-top: 2rem; font-size: 1rem; color: var(--primary-dark); }
@@ -282,6 +282,19 @@
         .download-btn { margin-top: 15px; background: var(--secondary); color: var(--primary-dark); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; }
 
         /* RESPONSIVE CSS */
+
+        /* ========================================
+           JARAK HALAMAN (SPACING) - AGAR TIDAK MEPET NAVBAR
+           ======================================== */
+        #profil-view, 
+        #fasilitas-view, 
+        #pendaftaran-view {
+            /* 70px (Navbar) + 60px (Jarak Tambahan) = 130px */
+            padding-top: 130px !important; 
+            background-color: #f4f4f4;
+            min-height: 100vh; /* Agar background abu-abunya full layar */
+        }
+
         @media (max-width: 768px) {
             body { padding-bottom: 0; }
             .nav-links { display: none; }
@@ -317,6 +330,24 @@
             
             .col-no { width: 30px; font-size: 0.8rem; }
             .col-price { width: 90px; font-size: 0.85rem; }
+            /* --- JARAK ATAS UNTUK: PROFIL, FASILITAS, PENDAFTARAN --- */
+            #profil-view, 
+            #fasilitas-view, 
+            #pendaftaran-view {
+                /* 70px (Tinggi Navbar) + 50px (Jarak Tambahan) = 120px */
+                padding-top: 120px !important; 
+                background-color: #f4f4f4; /* Memastikan background tetap abu-abu */
+            }
+
+            /* Jarak khusus untuk tampilan Mobile (HP) */
+            @media (max-width: 768px) {
+                #profil-view, 
+                #fasilitas-view, 
+                #pendaftaran-view {
+                    /* Jarak sedikit lebih kecil di HP agar tidak terlalu kosong */
+                    padding-top: 100px !important; 
+                }
+            }
         }
     </style>
 </head>
@@ -409,9 +440,16 @@
                     <h3 class="arabic-greeting">بِسْمِ الله الرَّحْمٰنِ الرَّحِيْمِ</h3>
                     <h3 class="arabic-greeting">السلام عليكم ورحمة الله وبركاته</h3>
                     <div class="sambutan-content">
-                        <p class="hadith">Rasulullah SAW bersabda "Tholabul 'ilmi faridhotun 'ala kulli muslimin wal muslimat" yang artinya "Menuntut ilmu adalah kewajiban bagi setiap muslim dan muslimat,"</p>
-                        <p>Oleh karena itu, kaum muslimin, Bapak/Ibu yang sedang mencari sekolah Islam untuk putra-putrinya, yang mengajarkan ilmu syar'i sesuai pemahaman salafus sholeh, maka guru-guru di Pesantren Putra Aminah Boarding School siap untuk membimbing dan membina putra-putri Bapak/Ibu semua.</p>
+                        <p class="hadith">Rasulullah SAW bersabda</p>
+                        <h3> طَلَبُ الْعِلْمِ فَرِيْضَةٌ عَلَى كُلِّ مُسْلِمٍ </h3>
+                        <br>
+                        <p><i>"Menuntut ilmu adalah kewajiban bagi setiap muslim dan muslimat,"</i></p>
+                        <p><i>(HR. Ibnu Majah no. 224, dari sahabat Anas bin Malik radhiyallahu ‘anhu, dishahihkan Al Albani dalam Shahiih al-Jaami’ish Shaghiir no. 3913)</i></p>
+                        <br>
+                        <p>Oleh karena itu, kaum muslimin, Bapak/Ibu yang sedang mencari sekolah Islam untuk putra-putrinya, yang mengajarkan ilmu syar'i sesuai pemahaman salafus sholeh, guru-guru di Pesantren Putra Aminah Boarding School siap untuk membimbing dan membina putra-putri Bapak/Ibu semua.</p>
+                        <br>
                         <p>Pesantren Putra Aminah Boarding School memiliki tempat yang sangat nyaman untuk belajar. Mulai dari lingkungannya yang tenang, ruangan, kelas, asrama, mesjid, semuanya ber-AC. Dan lokasinya yang sangat strategis berada di tengah kota Jakarta. Pesantren Putra Aminah Boarding School telah terakreditasi A. Sehingga lulusan Pesantren Aminah Boarding School akan mendapat ijazah resmi yang diakui oleh negara dan dapat melanjutkan pendidikan ke berbagai universitas atau perguruan tinggi baik yang ada di dalam negeri maupun luar negeri.</p>
+                        <br>
                         <p>Segera daftarkan anak Bapak Ibu ke Pesantren Aminah Boarding School, karena quota kami terbatas. Terima kasih. Semoga kita semua selalu dalam lindungan Allah SWT. Amiin.</p>
                     </div>
                     <p class="signature">Hormat Kami,<br><br><strong>Ustadz La Ode Sandipati, S.Pd., M.Pd., S.Q.I, C.EQL., MTM.</strong><br>Pimpinan Pesantren</p>
