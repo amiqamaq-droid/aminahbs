@@ -34,7 +34,7 @@
             --nav-height: 70px;
             --bottom-nav-height: 70px;
         }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text); background-color: #f4f4f4; padding-bottom: 0; margin: 0; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text); background-color: var(--white); padding-bottom: 0; margin: 0; }
         html { scroll-behavior: smooth; }
 
         /* ========================================
@@ -291,7 +291,7 @@
         #pendaftaran-view {
             /* 70px (Navbar) + 60px (Jarak Tambahan) = 130px */
             padding-top: 130px !important; 
-            background-color: #f4f4f4;
+            background-color: var(--white);
             min-height: 100vh; /* Agar background abu-abunya full layar */
         }
 
@@ -347,6 +347,46 @@
                     /* Jarak sedikit lebih kecil di HP agar tidak terlalu kosong */
                     padding-top: 100px !important; 
                 }
+            }
+        }
+        /* ========================================
+           FORCE ALL WHITE BACKGROUND (OVERRIDE)
+           Agar semua tampilan (Mobile/Desktop) Putih Bersih
+           ======================================== */
+        
+        /* 1. Ubah warna section yang sebelumnya abu-abu/gradient */
+        .programs, 
+        .video-section, 
+        .keunggulan, 
+        .program-unggulan,
+        .feature-list-wrapper { 
+            background: var(--white) !important; 
+            background-color: #ffffff !important;
+            background-image: none !important; /* Menghapus gradient di bagian keunggulan */
+        }
+
+        /* 2. Opsional: Beri border tipis pada card agar tetap terlihat 
+              karena sekarang backgroundnya sama-sama putih */
+        .program-card, 
+        .keunggulan-item, 
+        .program-item,
+        .schedule-card,
+        .pricing-card,
+        .info-card-style,
+        .brochure-card {
+            border: 1px solid #eee !important; /* Garis tepi tipis */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important; /* Bayangan halus */
+        }
+
+        /* 3. Pastikan Container Halaman Mobile juga Putih */
+        @media (max-width: 768px) {
+            body, 
+            html, 
+            .page-section,
+            #profil-view, 
+            #fasilitas-view, 
+            #pendaftaran-view {
+                background-color: #ffffff !important;
             }
         }
     </style>
